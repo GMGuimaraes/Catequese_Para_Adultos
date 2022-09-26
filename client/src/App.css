@@ -1,0 +1,27 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.form input{
+  width: 300px;
+  height: 20px;
+  margin: 5px;
+}
+
+.form button{
+  margin-top: 20px;
+}
+
+.form button:hover {
+  cursor: pointer;
+}
