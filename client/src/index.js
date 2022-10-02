@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Cadastrar from './Cadastrar';
 import reportWebVitals from './reportWebVitals';
+import Home from './Home';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+window.loggedin = true; //TODO Login autenticado
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Router>
+    <Routes>
+      <Route path='/' element={<Home></Home>}>Home</Route>
+      <Route path='/cadastrar' element={<Cadastrar></Cadastrar>}></Route>
+      <Route path='/pesquisar' element={<h1>Pesquisar (TODO)</h1>}></Route>
+    </Routes>
+  </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function

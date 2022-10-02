@@ -1,6 +1,9 @@
-
+import React from 'react';
 import { useState } from 'react';
 import './App.css';
+import Navbar from './Navbar';
+import Home from './Home';
+
 import Axios from 'axios'
 
 function App() {
@@ -27,12 +30,14 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="Cadastrar">
+      <Navbar></Navbar>
       <div className="form">
         <label>Nome Completo: </label>
-        <input type="text" 
-        onChange={(event) => {setName(event.target.value);
-        }} />
+        <input
+          type="text" 
+          onChange={(event) => {setName(event.target.value)}} 
+        />
         <p>Documentos Apresentados</p>
         <label>CPF:</label>
         <input type="checkbox"></input>
