@@ -18,10 +18,20 @@
   margin: 5px;
 }
 
-.form button{
+button{
   margin-top: 20px;
+  width: 320px;
+
+
 }
 
-.form button:hover {
+button:hover {
   cursor: pointer;
+}
+
+.catequizandos {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
 }
