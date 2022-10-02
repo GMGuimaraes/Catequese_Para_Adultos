@@ -1,10 +1,12 @@
 const express = require('express')
+const cadastroCatequizandoRoutes = require("./cadastroCatequizando.routes")
 const app = express()
 const cors = require('cors')
 
 app.use(cors());
 
-app.use(express.json())
+app.use(express.json());
+app.use(cadastroCatequizandoRoutes);
 
 app.get("/health", (req, res) => {
     return res.json("up");
