@@ -37,3 +37,208 @@ button:hover {
   width: 100%;
   flex-direction: column;
 }
+
+ul.navi {
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 50vh;
+    left: 25vw;
+    padding: 0;
+    margin: 0;
+    background: none; 
+}
+ul.navi li {
+  border-width: 1px;
+  height: 22px;
+  padding: 0 18px 0 5px;
+  margin: 0;
+  display: block;
+  float: left;
+}
+ul.navi li.li1 {
+  background: none;
+  height: 22px;
+  padding: 0 14px 0 5px;
+  margin: 0;
+  display: block;
+  float: left;
+}
+
+ul.navi li a {
+  font: 14px/21px Arial, Helvetica, sans-serif;
+  color: #D7CEBD;
+  text-decoration: none;
+  text-indent: 0px;
+  padding: 0 0 0 33px;
+  font-weight: bold;
+  margin: 0;
+  width: inherit;
+  letter-spacing: -1px;
+  background-repeat: no-repeat;
+  background-image: url('images/button.png');
+}
+
+ul.navi li a:hover {
+  color: #FF9933;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-image: url('images/button_over.png');
+}
+
+.mainTitle {
+  font-family: 'Brush Script MT', cursive;
+  text-align: center;
+}
+img.imagemPincipal {
+  padding-left: 20vw;
+  weight: auto;
+}
+div.Home{
+ background-color: #d6ffff  ;
+ margin: 10px;
+ min-height: max-content;
+ padding-bottom: 220px;
+}
+button.login {
+  position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 1220px;
+    top: 10px;
+    background-color:rgba(40, 90, 40, 0.800);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+    border-radius: 15px;
+}
+#left_ {
+  float: left;
+  left: 0px;
+  top: 364px;
+  padding-left: 16vw;
+  padding-top: 2vh;
+  width: 266px;
+}
+
+#left_ h2 {
+  font: 30px/24px "Calisto MT";
+  color: #5a3c00;
+  font-weight: normal;
+  display: block;
+  letter-spacing: -1px;
+  word-spacing: 0em;
+  text-indent: 0px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+  padding-top: 0px;
+  padding-left: 55px;
+}
+
+#left_ p {
+  background: no-repeat;
+  color: #3f1e1e;
+  padding: 0 0 0 55px;
+  width: 190px;
+  display: block;
+  font: 13px/20px "Trebuchet MS";
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  letter-spacing: 0px;
+}
+
+#left_ p span {
+  color: #E1BF9D;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: -1px;
+}
+
+#left_ p span.bg {
+  color: #799fbb;
+}
+
+#left_ p a {
+  font: 13px/12px "trebuchet MS";
+  font-weight: normal;
+  color: #FFD62F;
+  text-decoration: underline;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+#left_ p a:hover {
+  background: no-repeat;
+  color: #FF6600;
+  font-weight: normal;
+}
+#right_ {
+  float: left;
+  left: 266px;
+  top: 364px;
+  width: 554px;
+  margin-top: 2vh;
+  margin-left: 20vw;
+}
+
+#right_ h2 {
+  font: 30px/24px "Calisto MT";
+  color: #5a3c00;
+  font-weight: normal;
+  display: block;
+  letter-spacing: -1px;
+  word-spacing: 0em;
+  text-indent: 0px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+  padding-top: 0px;
+  padding-left: 20px;
+}
+
+#right_ p {
+  background: no-repeat;
+  color: #3f1e1e;
+  padding: 0 0 0 20px;
+  width: 490px;
+  display: block;
+  font: 13px/20px "Trebuchet MS";
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  letter-spacing: 0px;
+}
+
+#right_ p span {
+  color: #000000;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: -1px;
+}
+
+#right_ p span.bg {
+  color: #799fbb;
+}
+
+#right_ p a {
+  font: 13px/12px "trebuchet MS";
+  font-weight: normal;
+  color: #413712;
+  text-decoration: underline;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+#right_ p a:hover {
+  background: no-repeat;
+  color: #FF6600;
+  font-weight: normal;
+}
+img.mainLogo {
+  display: absolute;
+  border-radius: 50px;
+  vertical-align: top;
+  float: left;
+}
