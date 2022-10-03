@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   background-color: #F2FFEF;
-
 }
 
 .form{
@@ -23,8 +22,6 @@
 button{
   margin-top: 20px;
   width: 320px;
-
-
 }
 
 button:hover {
@@ -37,18 +34,28 @@ button:hover {
   width: 100%;
   flex-direction: column;
 }
-
+ul.navBar{
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 55px;
+  left: 38vw;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font: 14px/21px Arial, Helvetica, sans-serif;
+}
 ul.navi {
     width: 100%;
     display: block;
     position: absolute;
     top: 50vh;
-    left: 25vw;
+    left: 35vw;
     padding: 0;
     margin: 0;
     background: none; 
 }
-ul.navi li {
+ul.navi li, ul.navBar li {
   border-width: 1px;
   height: 22px;
   padding: 0 18px 0 5px;
@@ -91,10 +98,10 @@ ul.navi li a:hover {
   text-align: center;
 }
 img.imagemPincipal {
-  padding-left: 20vw;
+  padding-left: 16vw;
   weight: auto;
 }
-div.Home{
+div.Home, div.Cadastrar {
  background-color: #d6ffff  ;
  margin: 10px;
  min-height: max-content;
@@ -104,7 +111,7 @@ button.login {
   position: absolute;
     width: 100px;
     height: 40px;
-    left: 1220px;
+    left: 1080px;
     top: 10px;
     background-color:rgba(40, 90, 40, 0.800);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
@@ -118,7 +125,6 @@ button.login {
   padding-top: 2vh;
   width: 266px;
 }
-
 #left_ h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
@@ -174,12 +180,12 @@ button.login {
   font-weight: normal;
 }
 #right_ {
-  float: left;
+  float: right;
   left: 266px;
   top: 364px;
   width: 554px;
   margin-top: 2vh;
-  margin-left: 20vw;
+  margin-left: 0vw;
 }
 
 #right_ h2 {
@@ -241,4 +247,24 @@ img.mainLogo {
   border-radius: 50px;
   vertical-align: top;
   float: left;
+}
+.requisitos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 6px;
+  position: absolute;
+  width: 47px;
+  height: 20px;
+  left: calc(50% - 47px/2 - 171.5px);
+  top: calc(50% - 20px/2 - 21px)
+}
+#box {
+  margin: -120px;
+}
+button {
+  background-color: rgba(40, 90, 40, 0.800);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+  border-radius: 15px;
 }

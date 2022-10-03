@@ -31,6 +31,7 @@ function App() {
 
   return (
     <div className="Cadastrar">
+      <h1 className="mainTitle">Paróquia Dom Bosco</h1>
       <Navbar></Navbar>
       <div className="form">
         <label>Nome Completo: </label>
@@ -39,13 +40,26 @@ function App() {
           onChange={(event) => {setName(event.target.value)}} 
         />
         <p>Documentos Apresentados</p>
-        <label>CPF:</label>
-        <input type="checkbox"></input>
-        <label>RG:</label>
-        <input type="checkbox"></input>
-        <label>Comprovante de Residência:</label>
-        <input type="checkbox"></input>
-        <button onClick={addCatequizando}>Cadastrar</button>
+        <div id='requisitos'>
+          <lu id='requisitos'>
+            <li>
+              <label id='box'>CPF:</label>
+              <input type="checkbox"></input>
+              <label id='box'>RG:</label>
+              <input type="checkbox"></input>
+              <label id='box'>Comprovante de Residência:</label>
+              <input type="checkbox"></input>
+            </li><li>
+              <label id='box'>Crisma:</label>
+              <input type="checkbox"></input>
+              <label id='box'>Batismo:</label>
+              <input type="checkbox"></input>
+              <label id='box'>Eucaristia:</label>
+              <input type="checkbox"></input>
+            </li>
+          </lu>
+          </div>
+          <button onClick={addCatequizando}>Cadastrar</button>
       </div>  
 
       <hr></hr>

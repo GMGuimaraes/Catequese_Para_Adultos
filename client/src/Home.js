@@ -15,8 +15,6 @@ function Home() {
                 <li><a href="/cadastrar">Cadastrar</a></li>
                 <li><a href="/pesquisar">Pesquisar</a></li>
                 <li><a href="/recados">Recados</a></li>
-                <li><a href="#">Novas Turmas</a></li>
-                <li><a href="#">Contate-nos</a></li>
             </ul>
             <button className="login">Login</button>
             <div id="left_">
@@ -31,7 +29,7 @@ function Home() {
                 <h2>Catequese para Adultos</h2>
                 <p> <span className="style1">Sejam Bem Vindos</span> </p>
                 <p>&nbsp;</p>
-                <p> TODO TODO </p>
+                <p> TODO TODO</p>
                 <p>&nbsp;</p>
                 <p>TODO TODO</p>
                 <p className="style1">&nbsp;</p>
