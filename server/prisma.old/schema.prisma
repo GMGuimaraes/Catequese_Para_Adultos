@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://postgres:1234@localhost:5432/catequese"
+}
+
+model catequizando{
+  id Int @id @default(autoincrement())
+  name String
+  cpf Boolean @default(false)
+  rg Boolean @default(false)
+  comprovanteResidencia Boolean @default(false)
+  inicioCiclo DateTime
+  fimCiclo DateTime
+  batismo Boolean @default(false)
+  admissao Boolean @default(false)
+  eucaristia Boolean @default(false)
+  crisma Boolean @default(false)
+  docBatismo Boolean @default(false)
+  docAdmissao Boolean @default(false)
+  docEucaristia Boolean @default(false)
+  matrimonio Boolean @default(false)
+  matrimonioValid Boolean @default(false)
+  docMatrimonio Boolean @default(false)
+
+}
