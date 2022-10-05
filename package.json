@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "prettier-plugin-prisma": "^4.4.0"
+  }
+}
