@@ -12,10 +12,57 @@ datasource db {
 
 //Iniciando o modelo do banco
 
-model Turma{
-  idTurma         Int       @id       @default(autoincrement())
-  DataInicio      DateTime
-  DataFim         DateTime
+model Turma {
+  idTurma          Int                @id @default(autoincrement())
+  dataInicio       DateTime
+  dataFim          DateTime
+  CatequeseAdultos CatequeseAdultos[]
+  Sacramento       Sacramento[]
 
   @@map("turmas")
+}
+
+model CatequeseAdultos {
+  idCatequeseAdultos Int   @id @default(autoincrement())
+  turma              Turma @relation(fields: [idTurma], references: [idTurma])
+  idTurma            Int
+
+  @@map("catequeseAdultos")
+}
+
+model Pessoa {
+  cpf                   Int                @id
+  nome                  String
+  rg                    Boolean
+  comprovanteResidencia Boolean
+  casado                Boolean
+  idade                 Int
+  Sacramento            Sacramento[]
+  PadrinhoMadrinha      PadrinhoMadrinha[]
+
+  @@map("pessoas")
+}
+
+model Sacramento {
+  idSacramento    Int      @id
+  pessoa          Pessoa   @relation(fields: [cpfPessoa], references: [cpf])
+  cpfPessoa       Int
+  turma           Turma    @relation(fields: [idTurma], references: [idTurma])
+  idTurma         Int
+  dataInicioCiclo DateTime
+  dataFimCiclo    DateTime
+  dataMissa       DateTime
+
+  @@map("sacramentos")
+}
+
+model PadrinhoMadrinha {
+  pessoa                        Pessoa  @relation(fields: [cpfPessoa], references: [cpf])
+  cpfPessoa                     Int     @id
+  comprovanteBatismoAdmissao    Boolean
+  comprovantePrimeiraEucaristia Boolean
+  comprovanteCrisma             Boolean
+  comprovanteCasamento          Boolean
+
+  @@map("padrinhosMadrinhas")
 }
