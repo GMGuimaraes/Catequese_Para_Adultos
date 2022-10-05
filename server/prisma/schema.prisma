@@ -44,25 +44,70 @@ model Pessoa {
 }
 
 model Sacramento {
-  idSacramento    Int      @id
-  pessoa          Pessoa   @relation(fields: [cpfPessoa], references: [cpf])
-  cpfPessoa       Int
-  turma           Turma    @relation(fields: [idTurma], references: [idTurma])
-  idTurma         Int
-  dataInicioCiclo DateTime
-  dataFimCiclo    DateTime
-  dataMissa       DateTime
+  idSacramento       Int                  @id
+  pessoa             Pessoa               @relation(fields: [cpfPessoa], references: [cpf])
+  cpfPessoa          Int
+  turma              Turma                @relation(fields: [idTurma], references: [idTurma])
+  idTurma            Int
+  dataInicioCiclo    DateTime
+  dataFimCiclo       DateTime
+  dataMissa          DateTime
+  Batismo            Batismo[]
+  Admissao           Admissao[]
+  PrimeiraEucaristia PrimeiraEucaristia[]
+  Crisma             Crisma[]
 
   @@map("sacramentos")
 }
 
 model PadrinhoMadrinha {
-  pessoa                        Pessoa  @relation(fields: [cpfPessoa], references: [cpf])
-  cpfPessoa                     Int     @id
+  pessoa                        Pessoa    @relation(fields: [cpfPessoa], references: [cpf])
+  cpfPessoa                     Int       @id
   comprovanteBatismoAdmissao    Boolean
   comprovantePrimeiraEucaristia Boolean
   comprovanteCrisma             Boolean
   comprovanteCasamento          Boolean
+  Batismo                       Batismo[]
+  Crisma                        Crisma[]
 
   @@map("padrinhosMadrinhas")
+}
+
+model Batismo {
+  sacramento          Sacramento       @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento        Int              @id
+  padrinhoMadrinha    PadrinhoMadrinha @relation(fields: [cpfPadrinhoMadrinha], references: [cpfPessoa])
+  cpfPadrinhoMadrinha Int
+
+  @@map("batismos")
+}
+
+model Admissao {
+  sacramento     Sacramento @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento   Int        @id
+  religiaoOrigem String
+  dataOrigem     String
+
+  @@map("admissoes")
+}
+
+model PrimeiraEucaristia {
+  sacramento                 Sacramento @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento               Int        @id
+  comprovanteBatismoAdmissao Boolean
+  comprovanteCasamento       Boolean
+  primeiraEucaristia         String
+
+  @@map("primeiraEucaristias")
+}
+
+model Crisma {
+  sacramento                 Sacramento       @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento               Int              @id
+  comprovanteBatismoAdmissao Boolean
+  comprovanteCasamento       Boolean
+  padrinhoMadrinha           PadrinhoMadrinha @relation(fields: [cpfPadrinhoMadrinha], references: [cpfPessoa])
+  cpfPadrinhoMadrinha        Int
+
+  @@map("Crismas")
 }
