@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { prismaClient } from "../database/prismaCliente";
 
-export class ReadTurmaController {
+export class ReadBatismoController {
     async handle(request: Request, response: Response) {
 
-        const turma = await prismaClient.turma.findMany();
+        const batismo = await prismaClient.batismo.findMany();
         
-        return response.json(turma);
+        return response.json(batismo);
     }
 }

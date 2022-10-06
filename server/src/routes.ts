@@ -18,6 +18,14 @@ import { FindAdmissaoController } from "./controllers/FindAdmissaoController";
 import { FindEucaristiaPrimeiraController } from "./controllers/FindEucaristiaPrimeiraController";
 import { FindCrismaController } from "./controllers/FindCrismaController";
 import { ReadTurmaController } from "./controllers/ReadTurmaController";
+import { ReadCatequeseAdultosController } from "./controllers/ReadCatequeseAdultosController";
+import { ReadPessoaController } from "./controllers/ReadPessoaController";
+import { ReadSacramentoController } from "./controllers/ReadSacramentoController";
+import { ReadPadrinhoMadrinhaController } from "./controllers/ReadPadrinhoMadrinhaController";
+import { ReadBatismoController } from "./controllers/ReadBatismoController";
+import { ReadAdmissaoController } from "./controllers/ReadAdmissaoController";
+import { ReadEucaristiaPrimeiraController } from "./controllers/ReadEucaristiaPrimeiraController";
+import { ReadCrismaController } from "./controllers/ReadCrismaController";
 
 const router = Router();
 
@@ -42,6 +50,14 @@ const findEucaristiaPrimeira = new FindEucaristiaPrimeiraController();
 const findCrisma = new FindCrismaController();
 
 const readTurma = new ReadTurmaController();
+const readCatequeseAdultos = new ReadCatequeseAdultosController();
+const readPessoa = new ReadPessoaController();
+const readSacramento = new ReadSacramentoController();
+const readPadrinhoMadrinha = new ReadPadrinhoMadrinhaController();
+const readBatismo = new ReadBatismoController();
+const readAdmissao = new ReadAdmissaoController();
+const readEucaristiaPrimeira = new ReadEucaristiaPrimeiraController();
+const readCrisma = new ReadCrismaController();
 
 router.post("/turma", createTurma.handle);
 router.post("/catequeseadulto", createCatequeseAdultos.handle);
@@ -59,10 +75,18 @@ router.get("/pessoa:cpf", findPessoa.handle);
 router.get("/sacramento:idSacramento", findSacramento.handle);
 router.get("/padrinhomadrinha:cpfPessoa", findPadrinhoMadrinha.handle);
 router.get("/batismo:idSacramento", findBatismo.handle);
-router.get("/admissao:idSacramento", findSacramento.handle);
+router.get("/admissao:idSacramento", findAdmissao.handle);
 router.get("/primeiraeucaristia:idSacramento", findEucaristiaPrimeira.handle);
 router.get("/crisma:idSacramento", findCrisma.handle);
 
-router.get("/turma")
+router.get("/turma", readTurma.handle);
+router.get("/catequeseadulto", readCatequeseAdultos.handle);
+router.get("/pessoa", readPessoa.handle);
+router.get("/sacramento", readSacramento.handle);
+router.get("/padrinhomadrinha", readPadrinhoMadrinha.handle);
+router.get("/batismo", readBatismo.handle);
+router.get("/admissao", readAdmissao.handle);
+router.get("/primeiraeucaristia", readEucaristiaPrimeira.handle);
+router.get("/crisma", readCrisma.handle);
 
 export { router };
