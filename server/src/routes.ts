@@ -71,13 +71,13 @@ router.post("/crisma", createCrisma.handle);
 
 router.get("/turma/:idTurma", findTurma.handle);
 router.get("/catequeseadulto/:idCatequeseAdultos", findCatequeseAdultos.handle);
-router.get("/pessoa:cpf", findPessoa.handle);
-router.get("/sacramento:idSacramento", findSacramento.handle);
-router.get("/padrinhomadrinha:cpfPessoa", findPadrinhoMadrinha.handle);
-router.get("/batismo:idSacramento", findBatismo.handle);
-router.get("/admissao:idSacramento", findAdmissao.handle);
-router.get("/primeiraeucaristia:idSacramento", findEucaristiaPrimeira.handle);
-router.get("/crisma:idSacramento", findCrisma.handle);
+router.get("/pessoa/:cpf", findPessoa.handle);
+router.get("/sacramento/:idSacramento", findSacramento.handle);
+router.get("/padrinhomadrinha/:cpfPessoa", findPadrinhoMadrinha.handle);
+router.get("/batismo/:idSacramento", findBatismo.handle);
+router.get("/admissao/:idSacramento", findAdmissao.handle);
+router.get("/primeiraeucaristia/:idSacramento", findEucaristiaPrimeira.handle);
+router.get("/crisma/:idSacramento", findCrisma.handle);
 
 router.get("/turma", readTurma.handle);
 router.get("/catequeseadulto", readCatequeseAdultos.handle);
