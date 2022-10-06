@@ -1,7 +1,12 @@
 # Instale
 
 Baixe e instale o Node.js com o npm
-https://nodejs.org/en/download/current/
+
+- https://nodejs.org/en/download/current/
+
+Baixe e instale o Postgresql
+
+- https://www.postgresql.org/download/
 
 # Atualize
 
@@ -19,13 +24,19 @@ Entre na pasta client e execute
 
 - npm i
 
-# Configure o postgress
+# Configure o acesso ao postgress
 
 - va no arquivo server/.env e siga os passos
 
 # Rode as migrations
 
 - yanr prisma generate
+
+# Execute o Servidor
+
+Navegue até a ppasta server e execute:
+
+- yarn dev
 
 # Execute a aplicação Catequese_Para_Adultos
 
