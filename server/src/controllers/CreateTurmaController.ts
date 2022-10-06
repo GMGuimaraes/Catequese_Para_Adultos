@@ -3,7 +3,7 @@ import { prismaClient } from "../database/prismaCliente";
 
 export class CreateTurmaController{
     async handle(request: Request, response: Response) {
-        const { dataInicio, dataFim} = request.body;
+        const { dataInicio, dataFim } = request.body;
 
         const turma = await prismaClient.turma.create({
             data: {
@@ -12,7 +12,7 @@ export class CreateTurmaController{
             }
         })
 
-        return response.json();
+        return response.json(turma);
     }
 }
 

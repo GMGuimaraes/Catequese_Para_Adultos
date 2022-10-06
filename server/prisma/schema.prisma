@@ -54,8 +54,8 @@ model Sacramento {
   dataMissa          DateTime
   Batismo            Batismo[]
   Admissao           Admissao[]
-  PrimeiraEucaristia PrimeiraEucaristia[]
   Crisma             Crisma[]
+  EucaristiaPrimeira EucaristiaPrimeira[]
 
   @@map("sacramentos")
 }
@@ -91,14 +91,14 @@ model Admissao {
   @@map("admissoes")
 }
 
-model PrimeiraEucaristia {
+model EucaristiaPrimeira {
   sacramento                 Sacramento @relation(fields: [idSacramento], references: [idSacramento])
   idSacramento               Int        @id
   comprovanteBatismoAdmissao Boolean
   comprovanteCasamento       Boolean
-  primeiraEucaristia         String
+  Eucaristia                 String
 
-  @@map("primeiraEucaristias")
+  @@map("eucaristiaPrimeira")
 }
 
 model Crisma {
