@@ -31,7 +31,7 @@ model CatequeseAdultos {
 }
 
 model Pessoa {
-  cpf                   Int                @id
+  cpf                   Int             @id
   nome                  String
   rg                    Boolean
   comprovanteResidencia Boolean
@@ -62,7 +62,7 @@ model Sacramento {
 
 model PadrinhoMadrinha {
   pessoa                        Pessoa    @relation(fields: [cpfPessoa], references: [cpf])
-  cpfPessoa                     Int       @id
+  cpfPessoa                     Int    @id
   comprovanteBatismoAdmissao    Boolean
   comprovantePrimeiraEucaristia Boolean
   comprovanteCrisma             Boolean
