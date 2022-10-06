@@ -44,7 +44,7 @@ model Pessoa {
 }
 
 model Sacramento {
-  idSacramento       Int                  @id
+  idSacramento       Int                  @id @default(autoincrement())
   pessoa             Pessoa               @relation(fields: [cpfPessoa], references: [cpf])
   cpfPessoa          Int
   turma              Turma                @relation(fields: [idTurma], references: [idTurma])

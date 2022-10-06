@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { CreateAdmissaoController } from "./controllers/CreateAdmissaoController";
-import { CreateBatismoController } from "./controllers/CreateBatismoController";
+import { CreateTurmaController } from "./controllers/CreateTurmaController";
 import { CreateCatequeseAdultosController } from "./controllers/CreateCatequeseAdultosController";
-import { CreateCrismaController } from "./controllers/CreateCrismaController";
-import { CreateEucaristiaPrimeiraController } from "./controllers/CreateEucaristiaPrimeiraController";
-import { CreatePadrinhoMadrinhaController } from "./controllers/CreatePadrinhoMadrinhaController";
 import { CreatePessoaController } from "./controllers/CreatePessoaController";
 import { CreateSacramentoController } from "./controllers/CreateSacramentoController";
-import { CreateTurmaController } from "./controllers/CreateTurmaController";
+import { CreatePadrinhoMadrinhaController } from "./controllers/CreatePadrinhoMadrinhaController";
+import { CreateBatismoController } from "./controllers/CreateBatismoController";
+import { CreateAdmissaoController } from "./controllers/CreateAdmissaoController";
+import { CreateEucaristiaPrimeiraController } from "./controllers/CreateEucaristiaPrimeiraController";
+import { CreateCrismaController } from "./controllers/CreateCrismaController";
 
 const router = Router();
 
@@ -29,6 +29,6 @@ router.post("/padrinhosmadrinha", createPadrinhoMadrinha.handle);
 router.post("/batismo", createBatismo.handle);
 router.post("/admissao", createAdmissao.handle);
 router.post("/primeiraeucaristia", createEucaristiaPrimeira.handle);
-router.post("/Crisma", createCrisma.handle);
+router.post("/crisma", createCrisma.handle);
 
 export { router };
