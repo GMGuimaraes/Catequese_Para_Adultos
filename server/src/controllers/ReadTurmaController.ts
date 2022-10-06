@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
 import { prismaClient } from "../database/prismaCliente";
 
-export class FindPessoaController {
+export class ReadTurmaController {
     async handle(request: Request, response: Response) {
-        const { cpf } = request.params;
 
-        const pessoa = await prismaClient.pessoa.findUnique({
+        const turma = await prismaClient.turma.findMany({
             where: {
-                cpf: +cpf,
+                
             },
         });
-        return response.json(pessoa);
+        return response.json(turma);
     }
 }

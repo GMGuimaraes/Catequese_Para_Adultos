@@ -17,6 +17,7 @@ import { FindBatismoController } from "./controllers/FindBatismoController";
 import { FindAdmissaoController } from "./controllers/FindAdmissaoController";
 import { FindEucaristiaPrimeiraController } from "./controllers/FindEucaristiaPrimeiraController";
 import { FindCrismaController } from "./controllers/FindCrismaController";
+import { ReadTurmaController } from "./controllers/ReadTurmaController";
 
 const router = Router();
 
@@ -40,6 +41,7 @@ const findAdmissao = new FindAdmissaoController();
 const findEucaristiaPrimeira = new FindEucaristiaPrimeiraController();
 const findCrisma = new FindCrismaController();
 
+const readTurma = new ReadTurmaController();
 
 router.post("/turma", createTurma.handle);
 router.post("/catequeseadulto", createCatequeseAdultos.handle);
@@ -61,5 +63,6 @@ router.get("/admissao:idSacramento", findSacramento.handle);
 router.get("/primeiraeucaristia:idSacramento", findEucaristiaPrimeira.handle);
 router.get("/crisma:idSacramento", findCrisma.handle);
 
+router.get("/turma")
 
 export { router };
