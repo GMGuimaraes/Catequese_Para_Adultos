@@ -26,6 +26,24 @@ import { ReadBatismoController } from "./controllers/ReadBatismoController";
 import { ReadAdmissaoController } from "./controllers/ReadAdmissaoController";
 import { ReadEucaristiaPrimeiraController } from "./controllers/ReadEucaristiaPrimeiraController";
 import { ReadCrismaController } from "./controllers/ReadCrismaController";
+import { UpdateTurmaController } from "./controllers/UpdateTurmaController";
+import { UpdateCatequeseAdultosController } from "./controllers/UpdateCatequeseAdultosController";
+import { UpdatePessoaController } from "./controllers/UpdatePessoaController";
+import { UpdateSacramentoController } from "./controllers/UpdateSacramentoController";
+import { UpdatePadrinhoMadrinhaController } from "./controllers/UpdatePadrinhoMadrinhaController";
+import { UpdateBatismoController } from "./controllers/UpdateBatismoController";
+import { UpdateAdmissaoController } from "./controllers/UpdateAdmissaoController";
+import { UpdateEucaristiaPrimeiraController } from "./controllers/UpdateEucaristiaPrimeiraController";
+import { UpdateCrismaController } from "./controllers/UpdateCrismaController";
+import { DeleteTurmaController } from "./controllers/DeleteTurmaController";
+import { DeleteCatequeseAdultosController } from "./controllers/DeleteCatequeseAdultosController";
+import { DeletePessoaController } from "./controllers/DeletePessoaController";
+import { DeleteSacramentoController } from "./controllers/DeleteSacramentoController";
+import { DeletePadrinhoMadrinhaController } from "./controllers/DeletePadrinhoMadrinhaController";
+import { DeleteBatismoController } from "./controllers/DeleteBatismoController";
+import { DeleteAdmissaoController } from "./controllers/DeleteAdmissaoController";
+import { DeleteEucaristiaPrimeiraController } from "./controllers/DeleteEucaristiaPrimeiraController";
+import { DeleteCrismaController } from "./controllers/DeleteCrismaController";
 
 const router = Router();
 
@@ -59,6 +77,26 @@ const readAdmissao = new ReadAdmissaoController();
 const readEucaristiaPrimeira = new ReadEucaristiaPrimeiraController();
 const readCrisma = new ReadCrismaController();
 
+const updateTurma = new UpdateTurmaController();
+const updateCatequeseAdultos = new UpdateCatequeseAdultosController();
+const updatePessoa = new UpdatePessoaController();
+const updateSacramento = new UpdateSacramentoController();
+const updatePadrinhoMadrinha = new UpdatePadrinhoMadrinhaController();
+const updateBatismo = new UpdateBatismoController();
+const updateAdmissao = new UpdateAdmissaoController();
+const updateEucaristiaPrimeira = new UpdateEucaristiaPrimeiraController();
+const updateCrisma = new UpdateCrismaController();
+
+const deleteTurma = new DeleteTurmaController();
+const deleteCatequeseAdultos = new DeleteCatequeseAdultosController();
+const deletePessoa = new DeletePessoaController();
+const deleteSacramento = new DeleteSacramentoController();
+const deletePadrinhoMadrinha = new DeletePadrinhoMadrinhaController();
+const deleteBatismo = new DeleteBatismoController();
+const deleteAdmissao = new DeleteAdmissaoController();
+const deleteEucaristiaPrimeira = new DeleteEucaristiaPrimeiraController();
+const deleteCrisma = new DeleteCrismaController();
+
 router.post("/turma", createTurma.handle);
 router.post("/catequeseadulto", createCatequeseAdultos.handle);
 router.post("/pessoa", createPessoa.handle);
@@ -88,5 +126,25 @@ router.get("/batismo", readBatismo.handle);
 router.get("/admissao", readAdmissao.handle);
 router.get("/primeiraeucaristia", readEucaristiaPrimeira.handle);
 router.get("/crisma", readCrisma.handle);
+
+router.patch("/turma/:idTurma", updateTurma.handle);
+router.patch("/catequeseadulto/:idCatequeseAdultos", updateCatequeseAdultos.handle);
+router.patch("/pessoa/:cpf", updatePessoa.handle);
+router.patch("/sacramento/:idSacramento", updateSacramento.handle);
+router.patch("/padrinhomadrinha/:cpfPessoa", updatePadrinhoMadrinha.handle);
+router.patch("/batismo/:idSacramento", updateBatismo.handle);
+router.patch("/admissao/:idSacramento", updateAdmissao.handle);
+router.patch("/primeiraeucaristia/:idSacramento", updateEucaristiaPrimeira.handle);
+router.patch("/crisma/:idSacramento", updateCrisma.handle);
+
+router.delete("/turma/:idTurma", deleteTurma.handle);
+router.delete("/catequeseadulto/:idCatequeseAdultos", deleteCatequeseAdultos.handle);
+router.delete("/pessoa/:cpf", deletePessoa.handle);
+router.delete("/sacramento/:idSacramento", deleteSacramento.handle);
+router.delete("/padrinhomadrinha/:cpfPessoa", deletePadrinhoMadrinha.handle);
+router.delete("/batismo/:idSacramento", deleteBatismo.handle);
+router.delete("/admissao/:idSacramento", deleteAdmissao.handle);
+router.delete("/primeiraeucaristia/:idSacramento", deleteEucaristiaPrimeira.handle);
+router.delete("/crisma/:idSacramento", deleteCrisma.handle);
 
 export { router };
