@@ -5,7 +5,7 @@ export class FindTurmaController {
     async handle(request: Request, response: Response) {
         const { idTurma } = request.params;
 
-        const turma = await prismaClient.turma.findFirst({
+        const turma = await prismaClient.turma.findUnique({
             where: {
                 idTurma: +idTurma,
             },

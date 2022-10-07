@@ -5,7 +5,7 @@ export class FindCrismaController {
     async handle(request: Request, response: Response) {
         const { idSacramento } = request.params;
 
-        const crisma = await prismaClient.crisma.findFirst({
+        const crisma = await prismaClient.crisma.findUnique({
             where: {
                 idSacramento: +idSacramento,
             },

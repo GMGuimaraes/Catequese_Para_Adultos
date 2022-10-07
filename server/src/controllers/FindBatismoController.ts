@@ -5,7 +5,7 @@ export class FindBatismoController {
     async handle(request: Request, response: Response) {
         const { idSacramento } = request.params;
 
-        const batismo = await prismaClient.batismo.findFirst({
+        const batismo = await prismaClient.batismo.findUnique({
             where: {
                 idSacramento: +idSacramento,
             },

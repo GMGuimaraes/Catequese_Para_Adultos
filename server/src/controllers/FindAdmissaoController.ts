@@ -5,7 +5,7 @@ export class FindAdmissaoController {
     async handle(request: Request, response: Response) {
         const { idSacramento } = request.params;
 
-        const admissao = await prismaClient.admissao.findFirst({
+        const admissao = await prismaClient.admissao.findUnique({
             where: {
                 idSacramento: +idSacramento,
             },

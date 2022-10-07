@@ -5,7 +5,7 @@ export class FindEucaristiaPrimeiraController {
     async handle(request: Request, response: Response) {
         const { idSacramento } = request.params;
 
-        const eucaristiaPrimeira = await prismaClient.eucaristiaPrimeira.findFirst({
+        const eucaristiaPrimeira = await prismaClient.eucaristiaPrimeira.findUnique({
             where: {
                 idSacramento: +idSacramento,
             },

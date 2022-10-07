@@ -5,7 +5,7 @@ export class FindPadrinhoMadrinhaController {
     async handle(request: Request, response: Response) {
         const { cpfPessoa } = request.params;
 
-        const padrinhoMadrinha = await prismaClient.padrinhoMadrinha.findFirst({
+        const padrinhoMadrinha = await prismaClient.padrinhoMadrinha.findUnique({
             where: {
                 cpfPessoa: +cpfPessoa,
             },

@@ -35,9 +35,13 @@ Entre na pasta client e execute
 
 # Execute o Servidor
 
-Navegue até a ppasta server e execute:
+Navegue até a pasta server e execute:
 
 - yarn dev
+
+# Documentação do CRUD
+
+- \server\prisma\docs\index.html
 
 # Execute a aplicação Catequese_Para_Adultos
 
