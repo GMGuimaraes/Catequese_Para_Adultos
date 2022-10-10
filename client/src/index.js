@@ -1,19 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Cadastrar from './Cadastrar';
-import reportWebVitals from './reportWebVitals';
-import Home from './Home';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Cadastrar from "./Cadastrar";
+import reportWebVitals from "./reportWebVitals";
+import Home from "./Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 window.loggedin = true; //TODO Login autenticado
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <Routes>
-      <Route path='/' element={<Home></Home>}>Home</Route>
-      <Route path='/cadastrar' element={<Cadastrar></Cadastrar>}></Route>
-      <Route path='/pesquisar' element={<h1>Pesquisar (TODO)</h1>}></Route>
+      <Route path="/" element={<Home></Home>}>
+        Home
+      </Route>
+      <Route path="/cadastrar" element={<Cadastrar></Cadastrar>}></Route>
+      <Route path="/pesquisar" element={<h1>Pesquisar (TODO)</h1>}></Route>
     </Routes>
   </Router>
 );

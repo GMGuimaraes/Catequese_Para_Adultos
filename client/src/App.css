@@ -5,29 +5,42 @@
   background-color: #F2FFEF;
 }
 
-.form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-}
 
 .form input{
   width: 300px;
   height: 20px;
   margin: 5px;
 }
+.home-nav{
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row nowrap;
+  height: auto;
+  justify-content: flex-start;
+  position: relative;
+  /*padding: 20px 5px;*/
+  padding-top: 0.5rem;
+  margin: 0 3.5rem;
 
-button{
-  margin-top: 20px;
-  width: 320px;
+}
+.buttonLogin{
+ /* margin-top: 20px;
+  position: ;
+  width: 100px;
+  left: 1080px;
+  top: 10px;*/
 }
 
-button:hover {
+.buttonLogin:hover {
   cursor: pointer;
 }
+header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+}
 .catequizandos {
   display: flex;
   align-items: center;
@@ -96,17 +109,23 @@ ul.navi li a:hover {
 .mainTitle {
   font-family: 'Brush Script MT', cursive;
   text-align: center;
+  padding-left: 10px;
+  margin-right: auto;
+
 }
-img.imagemPincipal {
+/*img.imagemPincipal {
   padding-left: 16vw;
   weight: auto;
-}
-div.Home, div.Cadastrar {
+}*/
+div.Home{
  background-color: #d6ffff  ;
- margin: 10px;
+ margin: auto;
  min-height: max-content;
- padding-bottom: 220px;
+ padding-bottom: 2%;
+ max-width: 1100px;
+ height: fit-content;
 }
+/*
 button.login {
   position: absolute;
     width: 100px;
@@ -116,7 +135,7 @@ button.login {
     background-color:rgba(40, 90, 40, 0.800);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
     border-radius: 15px;
-}
+}*/
 #left_ {
   float: left;
   left: 0px;
@@ -263,8 +282,9 @@ img.mainLogo {
 #box {
   margin: -120px;
 }
+/*
 button {
   background-color: rgba(40, 90, 40, 0.800);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
   border-radius: 15px;
-}
+}*/
