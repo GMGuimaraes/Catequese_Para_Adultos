@@ -2,10 +2,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #F2FFEF;
+  background-color:#d6ffff; 
+  /*#F2FFEF;*/
+  
 }
 
-
+.Home{
+  background-color:#d6ffff; 
+}
 .form input{
   width: 300px;
   height: 20px;
@@ -14,59 +18,86 @@
 .home-nav{
   align-items: flex-start;
   display: flex;
-  flex-flow: row nowrap;
+  background-color: #6B8080;
   height: auto;
-  justify-content: flex-start;
+  justify-content: space-between;
   position: relative;
-  /*padding: 20px 5px;*/
-  padding-top: 0.5rem;
-  margin: 0 3.5rem;
+  padding: 0.5rem 1rem;
 
+  /*padding-top: 0.5rem;
+  flex-flow: row nowrap;
+  margin: 0 3.5rem;
+*/
+  
 }
-.buttonLogin{
- /* margin-top: 20px;
+/*.buttonLogin{
+  margin-top: 20px;
   position: ;
   width: 100px;
   left: 1080px;
-  top: 10px;*/
-}
+  top: 10px;
+}*/
 
 .buttonLogin:hover {
   cursor: pointer;
 }
 header{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  /*flex-direction: column;width: 100%;*/
   align-items: center;
+  padding: 1rem;
+  text-align: center;
 
 }
+/*section{
+  
+}*/
 .catequizandos {
   display: flex;
   align-items: center;
   width: 100%;
   flex-direction: column;
 }
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #F0FFFF;
+}
+.container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+}
 ul.navBar{
-  width: 100%;
-  display: block;
-  position: absolute;
   top: 55px;
   left: 38vw;
   padding: 0;
   margin: 0;
   background: none;
   font: 14px/21px Arial, Helvetica, sans-serif;
+
+  /*
+  display: block;
+  width: 100%;
+  position: absolute;
+  */
 }
 ul.navi {
+    display: block;
+    padding: 2rem;
+    margin: 0.5rem;
+    background-color: #6B8080;
+    text-align: center;
+    /*    top: 50vh;
+    left: 35vw;
+    background: none; 
+    margin: 0;
     width: 100%;
     display: block;
     position: absolute;
-    top: 50vh;
-    left: 35vw;
-    padding: 0;
-    margin: 0;
-    background: none; 
+    */
 }
 ul.navi li, ul.navBar li {
   border-width: 1px;
@@ -116,7 +147,7 @@ ul.navi li a:hover {
 /*img.imagemPincipal {
   padding-left: 16vw;
   weight: auto;
-}*/
+}
 div.Home{
  background-color: #d6ffff  ;
  margin: auto;
@@ -135,8 +166,9 @@ button.login {
     background-color:rgba(40, 90, 40, 0.800);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
     border-radius: 15px;
-}*/
+} */--
 #left_ {
+  background-color: #F0FFFF;
   float: left;
   left: 0px;
   top: 364px;
@@ -266,6 +298,7 @@ img.mainLogo {
   border-radius: 50px;
   vertical-align: top;
   float: left;
+  /*http://www.diocesepresidenteprudente.com.br/wp-content/uploads/2019/07/paroquia-nossa-senhora-regente-feijo-1-regiao-01.jpg*/
 }
 .requisitos {
   display: flex;

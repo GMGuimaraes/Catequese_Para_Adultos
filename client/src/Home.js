@@ -12,7 +12,7 @@ function Home() {
           width="40px"
           height="40px"
         ></img>
-        <h1 className="mainTitle">Paróquia Dom Bosco</h1>
+        <h1 className="mainTitle">Paróquia São João Bosco</h1>
         <Button className="buttonLogin" variant="outline-info">
           Login
         </Button>
@@ -20,54 +20,65 @@ function Home() {
       <header>
         <img
           className="imagemPincipal"
-          src="http://www.diocesepresidenteprudente.com.br/wp-content/uploads/2019/07/paroquia-nossa-senhora-regente-feijo-1-regiao-01.jpg"
-          width="800"
-          height="250"
+          src="https://site.ucdb.br//public/noticias/1033018-igreja.jpg"
+          width="900"
+          height="350"
         ></img>
       </header>
-      <ul className="navi">
-        <li>
-          <a href="#">Inicio</a>
-        </li>
-        <li>
-          <a href="/cadastrar">Cadastrar</a>
-        </li>
-        <li>
-          <a href="/pesquisar">Pesquisar</a>
-        </li>
-        <li>
-          <a href="/recados">Recados</a>
-        </li>
-      </ul>
+      <section className="jumbotron text-center">
+        <div className="container">
+          <ul className="navi">
+            <li>
+              <a href="#">Inicio</a>
+            </li>
+            <li>
+              <a href="/cadastrar">Cadastrar</a>
+            </li>
+            <li>
+              <a href="/pesquisar">Pesquisar</a>
+            </li>
+            <li>
+              <a href="/recados">Recados</a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-      <div id="left_">
-        <h2>Ultimas Mudanças</h2>
-        <p>
-          <span className="style1">TODO</span> TODO TODO{" "}
-        </p>
-        <p>
-          <a href="#">mais detalhes ...</a>
-        </p>
-        <p>&nbsp;</p>
-        <p>
-          <span className="style1">TODO</span>TODO TODO{" "}
-        </p>
-        <p>
-          <a href="#">mais detalhes ...</a>
-        </p>
-      </div>
-      <div id="right_">
-        <h2>Catequese para Adultos</h2>
-        <p>
-          {" "}
-          <span className="style1">Sejam Bem Vindos</span>{" "}
-        </p>
-        <p>&nbsp;</p>
-        <p> TODO TODO</p>
-        <p>&nbsp;</p>
-        <p>TODO TODO</p>
-        <p className="style1">&nbsp;</p>
-        <p>TODO TODO</p>
+      <div className="container">
+        <div className="row">
+          <div id="left_">
+            <h2>Catequese para Adultos</h2>
+            <p>
+              <span className="style1">Sejam Bem Vindos!</span>{" "}
+            </p>
+            <p>
+              Aqui você pode ter o controle das atividades desenvolvidas dentro
+              de sua Catequese
+            </p>
+            <p>&nbsp;</p>
+            <p>
+              <span className="style1">Cadastre sua turma agora!</span>TODO TODO{" "}
+            </p>
+            <p>
+              <a href="#">mais detalhes ...</a>
+            </p>
+          </div>
+          <div id="right_">
+            <h2>Sobre</h2>
+            <p>
+              Cadastre seu catequizando, confira quais os documentos foram
+              apresentados, qual seu sacramento, cadastre os padrinhos e muito
+              mais <span className="style1"></span>{" "}
+            </p>
+            <p>&nbsp;</p>
+            <p> sss</p>
+            <p>&nbsp;</p>
+            <p>...</p>
+            <p className="style1">&nbsp;</p>
+            <p>TODO TODO</p>
+            <div id="map"></div>
+          </div>
+        </div>
       </div>
     </div>
   );
