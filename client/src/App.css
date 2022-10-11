@@ -46,17 +46,15 @@
 }
 
 header {
-  display: block;
-  /*flex-direction: column;width: 100%;*/
+  display: flex;
+  flex-direction: column;
+  /*width: 100%;*/
   align-items: center;
   padding: 1rem;
   text-align: center;
 
 }
 
-/*section{
-  
-}*/
 .catequizandos {
   display: flex;
   align-items: center;
@@ -64,50 +62,54 @@ header {
   flex-direction: column;
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #F0FFFF;
-}
-
 .container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: 0.2fr 1fr 0.2fr;
+  grid-template-areas:
+    "nav nav"
+    "left right"
+    "footer footer";
+  grid-gap: 0.5rem;
+  /*/display: flex;
+<section className="jumbotron text-center">
+<p>&nbsp;</p>
+          <p>&nbsp;</p>
+  flex-direction: column;*/
 
 }
 
-ul.navBar {
-  top: 55px;
-  left: 38vw;
-  padding: 0;
-  margin: 0;
-  background: none;
-  /* font: 14px/21px Arial, Helvetica, sans-serif; */
-
-
-  /* display: inline-block; */
-  width: 100%;
-  position: absolute;
-  min-height: 100px;
-}
-
-ul.navi {
-  display: block;
-  padding: 2rem;
-  margin: 0.5rem;
+.nav {
+  grid-area: nav;
+  padding: 1.5rem;
   background-color: #6B8080;
   text-align: center;
-  /*    top: 50vh;
+
+}
+
+footer {
+  grid-area: footer;
+  text-align: center;
+}
+
+/*
+  display: block;
+  width: 100%;
+  position: absolute;
+  */
+/*ul.navi {
+
+       top: 50vh;
     left: 35vw;
     background: none; 
     margin: 0;
     width: 100%;
     display: block;
     position: absolute;
-    */
-}
-
+    
+}*/
 ul.navi li,
 ul.navBar li {
   border-width: 1px;
@@ -151,8 +153,7 @@ ul.navi li a:hover {
 .mainTitle {
   font-family: 'Brush Script MT', cursive;
   text-align: center;
-  padding-left: 10px;
-  margin-right: auto;
+  padding-left: 1rem;
 
 }
 
@@ -179,42 +180,51 @@ button.login {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
     border-radius: 15px;
 } */
--- #left_ {
+content * {
   background-color: #F0FFFF;
+  padding: 1rem;
+  text-align: center;
+
+}
+
+#left_ {
+  grid-area: left;
+  /* 
   float: left;
   left: 0px;
   top: 364px;
   padding-left: 16vw;
   padding-top: 2vh;
-  width: 266px;
+  width: 266px;*/
 }
 
-#left_ h2 {
+h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
   font-weight: normal;
+  /*
   display: block;
   letter-spacing: -1px;
   word-spacing: 0em;
   text-indent: 0px;
-  margin-top: 0;
+  
   margin-right: 0;
   margin-bottom: 10px;
   padding-top: 0px;
-  padding-left: 55px;
+  padding-left: 55px;*/
 }
 
 #left_ p {
-  background: no-repeat;
   color: #3f1e1e;
+  font: 13px/20px "Trebuchet MS";
+  /*
   padding: 0 0 0 55px;
   width: 190px;
   display: block;
-  font: 13px/20px "Trebuchet MS";
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
-  letter-spacing: 0px;
+  letter-spacing: 0px;*/
 }
 
 #left_ p span {
@@ -233,9 +243,10 @@ button.login {
   font-weight: normal;
   color: #FFD62F;
   text-decoration: underline;
+  /*
   padding-top: 0;
   padding-right: 0;
-  padding-bottom: 0;
+  padding-bottom: 0;*/
 }
 
 #left_ p a:hover {
@@ -244,19 +255,26 @@ button.login {
   font-weight: normal;
 }
 
-#right_ {
+*/ #right_ {
+  grid-area: right;
+  /*padding: 1rem;
+  height: 4rem;
   float: right;
-  left: 266px;
-  top: 364px;
-  width: 554px;
+  left: 500px;
+  top: 300px;
+  
   margin-top: 2vh;
   margin-left: 0vw;
+  
+  width: 554px;
+  */
 }
 
-#right_ h2 {
+/*#right_ h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
   font-weight: normal;
+ 
   display: block;
   letter-spacing: -1px;
   word-spacing: 0em;
@@ -265,20 +283,21 @@ button.login {
   margin-right: 0;
   margin-bottom: 10px;
   padding-top: 0px;
-  padding-left: 20px;
-}
+  padding-left: 20px;}
+*/
 
 #right_ p {
-  background: no-repeat;
+
+  font: 13px/20px "Trebuchet MS";
   color: #3f1e1e;
-  padding: 0 0 0 20px;
+  /*padding: 0 0 0 20px;
   width: 490px;
   display: block;
-  font: 13px/20px "Trebuchet MS";
+  background: no-repeat;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 0;
-  letter-spacing: 0px;
+  letter-spacing: 0px;*/
 }
 
 #right_ p span {
@@ -297,9 +316,10 @@ button.login {
   font-weight: normal;
   color: #413712;
   text-decoration: underline;
+  /*
   padding-top: 0;
   padding-right: 0;
-  padding-bottom: 0;
+  padding-bottom: 0;*/
 }
 
 #right_ p a:hover {
@@ -329,11 +349,11 @@ img.mainLogo {
   top: calc(50% - 20px/2 - 21px)
 }
 
+/*
 #box {
   margin: -120px;
 }
 
-/*
 button {
   background-color: rgba(40, 90, 40, 0.800);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
