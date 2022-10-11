@@ -34,7 +34,7 @@ function App() {
     <div className="cadastrar">
       <h1 className="mainTitle">Paróquia Dom Bosco</h1>
       <Navbar></Navbar>
-
+      <p>Cadastre aqui o catequizando inserindo o nome e os documentos que foram apresentados</p>
       <Form>
         <Form.Group className="mb-3" controlId="nomeCatequizando">
           <Form.Label>Nome Completo: </Form.Label>

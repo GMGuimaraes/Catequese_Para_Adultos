@@ -4,7 +4,7 @@ import Cadastrar from "./Cadastrar";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 window.loggedin = true; //TODO Login autenticado
 

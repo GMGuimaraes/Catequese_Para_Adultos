@@ -2,20 +2,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color:#d6ffff; 
+  background-color: #d6ffff;
   /*#F2FFEF;*/
-  
+
 }
 
-.Home{
-  background-color:#d6ffff; 
+.Home {
+  background-color: #d6ffff;
 }
-.form input{
+
+.form input {
   width: 300px;
   height: 20px;
   margin: 5px;
 }
-.home-nav{
+
+.home-nav {
   align-items: flex-start;
   display: flex;
   background-color: #6B8080;
@@ -28,8 +30,9 @@
   flex-flow: row nowrap;
   margin: 0 3.5rem;
 */
-  
+
 }
+
 /*.buttonLogin{
   margin-top: 20px;
   position: ;
@@ -41,7 +44,8 @@
 .buttonLogin:hover {
   cursor: pointer;
 }
-header{
+
+header {
   display: block;
   /*flex-direction: column;width: 100%;*/
   align-items: center;
@@ -49,6 +53,7 @@ header{
   text-align: center;
 
 }
+
 /*section{
   
 }*/
@@ -59,38 +64,41 @@ header{
   flex-direction: column;
 }
 
-.row{
+.row {
   display: flex;
   flex-wrap: wrap;
   background-color: #F0FFFF;
 }
-.container{
+
+.container {
   align-items: center;
   display: flex;
   flex-direction: column;
 
 }
-ul.navBar{
+
+ul.navBar {
   top: 55px;
   left: 38vw;
   padding: 0;
   margin: 0;
   background: none;
-  font: 14px/21px Arial, Helvetica, sans-serif;
+  /* font: 14px/21px Arial, Helvetica, sans-serif; */
 
-  /*
-  display: block;
+
+  /* display: inline-block; */
   width: 100%;
   position: absolute;
-  */
+  min-height: 100px;
 }
+
 ul.navi {
-    display: block;
-    padding: 2rem;
-    margin: 0.5rem;
-    background-color: #6B8080;
-    text-align: center;
-    /*    top: 50vh;
+  display: block;
+  padding: 2rem;
+  margin: 0.5rem;
+  background-color: #6B8080;
+  text-align: center;
+  /*    top: 50vh;
     left: 35vw;
     background: none; 
     margin: 0;
@@ -99,7 +107,9 @@ ul.navi {
     position: absolute;
     */
 }
-ul.navi li, ul.navBar li {
+
+ul.navi li,
+ul.navBar li {
   border-width: 1px;
   height: 22px;
   padding: 0 18px 0 5px;
@@ -107,6 +117,7 @@ ul.navi li, ul.navBar li {
   display: block;
   float: left;
 }
+
 ul.navi li.li1 {
   background: none;
   height: 22px;
@@ -144,6 +155,7 @@ ul.navi li a:hover {
   margin-right: auto;
 
 }
+
 /*img.imagemPincipal {
   padding-left: 16vw;
   weight: auto;
@@ -166,8 +178,8 @@ button.login {
     background-color:rgba(40, 90, 40, 0.800);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
     border-radius: 15px;
-} */--
-#left_ {
+} */
+-- #left_ {
   background-color: #F0FFFF;
   float: left;
   left: 0px;
@@ -176,6 +188,7 @@ button.login {
   padding-top: 2vh;
   width: 266px;
 }
+
 #left_ h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
@@ -230,6 +243,7 @@ button.login {
   color: #FF6600;
   font-weight: normal;
 }
+
 #right_ {
   float: right;
   left: 266px;
@@ -293,6 +307,7 @@ button.login {
   color: #FF6600;
   font-weight: normal;
 }
+
 img.mainLogo {
   display: absolute;
   border-radius: 50px;
@@ -300,6 +315,7 @@ img.mainLogo {
   float: left;
   /*http://www.diocesepresidenteprudente.com.br/wp-content/uploads/2019/07/paroquia-nossa-senhora-regente-feijo-1-regiao-01.jpg*/
 }
+
 .requisitos {
   display: flex;
   flex-direction: row;
@@ -312,9 +328,11 @@ img.mainLogo {
   left: calc(50% - 47px/2 - 171.5px);
   top: calc(50% - 20px/2 - 21px)
 }
+
 #box {
   margin: -120px;
 }
+
 /*
 button {
   background-color: rgba(40, 90, 40, 0.800);
