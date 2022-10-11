@@ -4,12 +4,20 @@
     justify-content: baseline;
     background-color: darkgray;
     margin: 10px 0px;
+    margin-bottom: 4em;
+    box-shadow: 0px 2px 4px black;
 }
 
 .navbar ul li {
     padding: 1em 2em;
     background-color: aliceblue;
     color: black;
+}
+
+.navbar ul li a {
+    color: grey;
+    font-weight: bold;
+    display: block;
 }
 
 .navbar ul li:hover {
@@ -20,7 +28,6 @@
     color: aliceblue;
 }
 
-.navbar ul li a {
-    color: grey;
-    font-weight: bold;
+.navbar ul li:active a {
+    color: red;
 }
