@@ -25,8 +25,8 @@ function Home() {
           height="350"
         ></img>
       </header>
-      <section className="jumbotron text-center">
-        <div className="container">
+      <div className="container">
+        <div className="nav">
           <ul className="navi">
             <li>
               <a href="#">Inicio</a>
@@ -42,43 +42,30 @@ function Home() {
             </li>
           </ul>
         </div>
-      </section>
-
-      <div className="container">
-        <div className="row">
-          <div id="left_">
-            <h2>Catequese para Adultos</h2>
-            <p>
-              <span className="style1">Sejam Bem Vindos!</span>{" "}
-            </p>
-            <p>
-              Aqui você pode ter o controle das atividades desenvolvidas dentro
-              de sua Catequese
-            </p>
-            <p>&nbsp;</p>
-            <p>
-              <span className="style1">Cadastre sua turma agora!</span>TODO TODO{" "}
-            </p>
-            <p>
-              <a href="#">mais detalhes ...</a>
-            </p>
-          </div>
-          <div id="right_">
-            <h2>Sobre</h2>
-            <p>
-              Cadastre seu catequizando, confira quais os documentos foram
-              apresentados, qual seu sacramento, cadastre os padrinhos e muito
-              mais <span className="style1"></span>{" "}
-            </p>
-            <p>&nbsp;</p>
-            <p> sss</p>
-            <p>&nbsp;</p>
-            <p>...</p>
-            <p className="style1">&nbsp;</p>
-            <p>TODO TODO</p>
-            <div id="map"></div>
-          </div>
-        </div>
+        <content id="left_">
+          <h2>Catequese para Adultos</h2>
+          <p>
+            <span className="style1">Sejam Bem Vindos!</span>{" "}
+          </p>
+          <p>
+            Aqui você pode ter o controle das atividades desenvolvidas dentro de
+            sua Catequese
+          </p>
+          <p>
+            <span className="style1">Cadastre sua turma agora!</span>{" "}
+          </p>
+        </content>
+        <content id="right_">
+          <h2>Sobre</h2>
+          <p>
+            Cadastre seu catequizando, confira quais os documentos foram
+            apresentados, qual seu sacramento, cadastre os padrinhos e muito
+            mais!
+          </p>
+        </content>
+        <footer>
+          <p>Desenvolvido pelo Grupo 2 - Construção de Software - 2022</p>
+        </footer>
       </div>
     </div>
   );

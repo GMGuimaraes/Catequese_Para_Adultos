@@ -1,8 +1,8 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import { useState } from "react";
-import "./App.css";
 import "./CadastroCatequizando.css";
+import "./App.css";
 import Navbar from "./Navbar";
 import Home from "./Home";
 
@@ -32,12 +32,21 @@ function App() {
 
   return (
     <div className="cadastrar">
-      <h1 className="mainTitle">Paróquia Dom Bosco</h1>
+      <h1 className="mainTitle">Paróquia São João Bosco</h1>
       <Navbar></Navbar>
-
       <Form>
         <Form.Group className="mb-3" controlId="nomeCatequizando">
           <Form.Label>Nome Completo: </Form.Label>
+          <Form.Control
+            type="text"
+            onChange={(event) => {
+              setName(event.target.value);
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="CPFCatequizando">
+          <Form.Label>CPF: </Form.Label>
           <Form.Control
             type="text"
             onChange={(event) => {
@@ -52,7 +61,6 @@ function App() {
             controlId="requisitos"
           >
             <p>Documentos Apresentados</p>
-            <Form.Check type="checkbox" label="CPF" />
             <Form.Check type="checkbox" label="RG" />
             <Form.Check type="checkbox" label="Comprovante de Residência:" />
             <Form.Check type="checkbox" label="Crisma" />
