@@ -76,9 +76,14 @@ header{
 }
 .nav{
   grid-area: nav;
-  padding: 1.5rem;
-  background-color: #6B8080;
+  padding: 1rem;
+  background-color: #ABCCCC;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 14px/21px Arial, Helvetica, sans-serif;
+  color: #15346E;
 
 }
 footer{
@@ -106,7 +111,8 @@ ul.navi li, ul.navBar li {
   height: 22px;
   padding: 0 18px 0 5px;
   margin: 0;
-  display: block;
+  display: flex;
+  justify-content: center;
   float: left;
 }
 ul.navi li.li1 {
@@ -120,7 +126,7 @@ ul.navi li.li1 {
 
 ul.navi li a {
   font: 14px/21px Arial, Helvetica, sans-serif;
-  color: #D7CEBD;
+  color: #15346E;
   text-decoration: none;
   text-indent: 0px;
   padding: 0 0 0 33px;

@@ -16,62 +16,99 @@ function App() {
 
   const [catequizandosList, setCatequizandosList] = useState([]);
 
+  const catequizandos = "http://localhost:4003/";
   const addCatequizando = () => {
-    Axios.post("http://localhost:3001/createCatequizando", { name: name }).then(
-      () => {
+    Axios.post(catequizandos, {
+      cpf: "",
+      nome: "",
+      rg: false,
+      comprovanteResidencia: false,
+      casado: false,
+      idade: "",
+    })
+      .then((response) => {
         console.log("sucess");
-      }
-    );
+      })
+      .catch((error) => console.log(error));
   };
 
+  addCatequizando();
+
   const getCatequizando = () => {
-    Axios.get("http://localhost:3001/Catequizandos").then((response) => {
-      setCatequizandosList(response.data);
-    });
+    Axios.get(catequizandos)
+      .then((response) => {
+        const data = response.data;
+        //renderResults.textContent = JSON.stringify(data);
+      })
+      .catch((error) => console.log(error));
   };
+
+  getCatequizando();
 
   return (
     <div className="cadastrar">
-      <h1 className="mainTitle">Paróquia São João Bosco</h1>
-      <Navbar></Navbar>
-      <Form>
-        <Form.Group className="mb-3" controlId="nomeCatequizando">
-          <Form.Label>Nome Completo: </Form.Label>
-          <Form.Control
-            type="text"
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
-          />
-        </Form.Group>
+      <div className="header">
+        <img
+          className="mainLogo"
+          src="https://static.wixstatic.com/media/a8fce9_9316f9cab9f24756942e7018593bf6aa~mv2.png/v1/crop/x_195,y_149,w_546,h_548/fill/w_432,h_434,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Untitled%20design%20(84).png"
+          width="40px"
+          height="40px"
+        ></img>
+        <h1 className="mainTitle">Paróquia São João Bosco</h1>
+      </div>
 
-        <Form.Group className="mb-3" controlId="CPFCatequizando">
-          <Form.Label>CPF: </Form.Label>
-          <Form.Control
-            type="text"
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
-          />
-        </Form.Group>
+      <div className="nav">
+        <Navbar></Navbar>
+      </div>
+      <div className="row">
+        <div className="column side"></div>
+        <div className="column middle">
+          <Form>
+            <Form.Group className="mb-3" controlId="nomeCatequizando">
+              <Form.Label>Nome Completo: </Form.Label>
+              <Form.Control
+                type="text"
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              />
+            </Form.Group>
 
-        <div className="row">
-          <Form.Group
-            className="custom-control custom-checkbox"
-            controlId="requisitos"
-          >
-            <p>Documentos Apresentados</p>
-            <Form.Check type="checkbox" label="RG" />
-            <Form.Check type="checkbox" label="Comprovante de Residência:" />
-            <Form.Check type="checkbox" label="Crisma" />
-            <Form.Check type="checkbox" label="Batismo" />
-            <Form.Check type="checkbox" label="Eucaristia" />
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="CPFCatequizando">
+              <Form.Label>CPF: </Form.Label>
+              <Form.Control
+                type="text"
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              />
+            </Form.Group>
+
+            <div className="row">
+              <Form.Group
+                className="custom-control custom-checkbox"
+                controlId="requisitos"
+              >
+                <p>Documentos Apresentados</p>
+                <Form.Check type="checkbox" label="RG" />
+                <Form.Check
+                  type="checkbox"
+                  label="Comprovante de Residência:"
+                />
+                <Form.Check type="checkbox" label="Crisma" />
+                <Form.Check type="checkbox" label="Batismo" />
+                <Form.Check type="checkbox" label="Eucaristia" />
+              </Form.Group>
+            </div>
+            <div className="btnCadastrar">
+              <Button variant="primary" type="submit" onClick={addCatequizando}>
+                Cadastrar
+              </Button>
+            </div>
+          </Form>
         </div>
-        <Button variant="primary" type="submit" onClick={addCatequizando}>
-          Cadastrar
-        </Button>
-      </Form>
+        <div className="column side"></div>
+      </div>
 
       <hr></hr>
       <div className="catequizandos">
@@ -85,8 +122,10 @@ function App() {
           );
         })}
       </div>
+      <footer>
+        <p>Desenvolvido pelo Grupo 2 - Construção de Software - 2022</p>
+      </footer>
     </div>
   );
 }
-
 export default App;
