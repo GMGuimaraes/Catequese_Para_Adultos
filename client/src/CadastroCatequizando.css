@@ -1,0 +1,43 @@
+.cadastrar{
+    min-height: 100vh;
+    position: relative;
+    background-color: bisque;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1{
+
+}
+Container{
+    display: flex;
+}
+
+.form{
+    background-color: white;
+    display: flex;
+    padding: 2rem;
+    /*width: 100%;
+    /*box-shadow: 5px 5px 5px rgba(0,0,0,0,0.2);
+    display: flex;
+   /* flex-direction: column;width: 100%;*/
+    justify-content: center; 
+    align-items: center;
+  }
+
+.custom-control{
+    position: relative;
+    display: block;
+    padding-left: 1.5rem;
+    box-sizing: border-box;
+}
+
+ul.navBar{
+    top: 55px;
+    left: 38vw;
+    padding: 0;
+    margin: 0;
+    background: none;
+    font: 14px/21px Arial, Helvetica, sans-serif;
+}
+
+  

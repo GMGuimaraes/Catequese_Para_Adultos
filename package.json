@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "prettier-plugin-prisma": "^4.4.0"
+  },
+  "dependencies": {
+    "react-bootstrap": "^2.5.0"
+  }
+}

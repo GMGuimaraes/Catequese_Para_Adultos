@@ -1,15 +1,20 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+//  Prisma Schema
+//  https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = "postgres://postgres:1234@localhost:5432/catequese"
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
 }
 
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+<<<<<<< HEAD
 model Catequizando{
   id Int @id @default(autoincrement())
   name String
@@ -32,7 +37,108 @@ model Catequizando{
   turma Turma @relation(fields: [nomeTurma], references: [nome])
 
   @@map("catequizando")
+=======
+//Iniciando o modelo do banco
+>>>>>>> ba7f18e161127fd46c36f613a37927f1658c3e4d
 
+model Turma {
+  idTurma          Int                @id @default(autoincrement())
+  dataInicio       DateTime
+  dataFim          DateTime
+  CatequeseAdultos CatequeseAdultos[]
+  Sacramento       Sacramento[]
+
+  @@map("turmas")
+}
+
+model CatequeseAdultos {
+  idCatequeseAdultos Int   @id @default(autoincrement())
+  turma              Turma @relation(fields: [idTurma], references: [idTurma])
+  idTurma            Int
+
+  @@map("catequeseAdultos")
+}
+
+model Pessoa {
+  cpf                   Int             @id
+  nome                  String
+  rg                    Boolean
+  comprovanteResidencia Boolean
+  casado                Boolean
+  idade                 Int
+  Sacramento            Sacramento[]
+  PadrinhoMadrinha      PadrinhoMadrinha[]
+
+  @@map("pessoas")
+}
+
+model Sacramento {
+  idSacramento       Int                  @id @default(autoincrement())
+  pessoa             Pessoa               @relation(fields: [cpfPessoa], references: [cpf])
+  cpfPessoa          Int
+  turma              Turma                @relation(fields: [idTurma], references: [idTurma])
+  idTurma            Int
+  dataInicioCiclo    DateTime
+  dataFimCiclo       DateTime
+  dataMissa          DateTime
+  Batismo            Batismo[]
+  Admissao           Admissao[]
+  Crisma             Crisma[]
+  EucaristiaPrimeira EucaristiaPrimeira[]
+
+  @@map("sacramentos")
+}
+
+model PadrinhoMadrinha {
+  pessoa                        Pessoa    @relation(fields: [cpfPessoa], references: [cpf])
+  cpfPessoa                     Int    @id
+  comprovanteBatismoAdmissao    Boolean
+  comprovantePrimeiraEucaristia Boolean
+  comprovanteCrisma             Boolean
+  comprovanteCasamento          Boolean
+  Batismo                       Batismo[]
+  Crisma                        Crisma[]
+
+  @@map("padrinhosMadrinhas")
+}
+
+model Batismo {
+  sacramento          Sacramento       @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento        Int              @id
+  padrinhoMadrinha    PadrinhoMadrinha @relation(fields: [cpfPadrinhoMadrinha], references: [cpfPessoa])
+  cpfPadrinhoMadrinha Int
+
+  @@map("batismos")
+}
+
+model Admissao {
+  sacramento     Sacramento @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento   Int        @id
+  religiaoOrigem String
+  dataOrigem     String
+
+  @@map("admissoes")
+}
+
+model EucaristiaPrimeira {
+  sacramento                 Sacramento @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento               Int        @id
+  comprovanteBatismoAdmissao Boolean
+  comprovanteCasamento       Boolean
+  Eucaristia                 String
+
+  @@map("eucaristiaPrimeira")
+}
+
+model Crisma {
+  sacramento                 Sacramento       @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento               Int              @id
+  comprovanteBatismoAdmissao Boolean
+  comprovanteCasamento       Boolean
+  padrinhoMadrinha           PadrinhoMadrinha @relation(fields: [cpfPadrinhoMadrinha], references: [cpfPessoa])
+  cpfPadrinhoMadrinha        Int
+
+  @@map("Crismas")
 }
 
 model User {

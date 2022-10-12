@@ -1,0 +1,29 @@
+body {
+    background-color: bisque;
+}
+
+.lista-catequizandos {
+    min-height: 100px;
+    width: 100%;
+    background-color: aliceblue;
+    justify-content: center;
+}
+
+.lista-catequizandos h2 {
+    text-align: center;
+    padding: 20px;
+}
+
+.export-bar {
+    padding-left: 20px;
+    display: flex;
+}
+
+.icon {
+    padding: 10px;
+}
+
+.icon:hover {
+    cursor: pointer;
+    background-color: grey;
+}
