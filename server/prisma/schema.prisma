@@ -10,7 +10,7 @@ datasource db {
   url      = "postgres://postgres:1234@localhost:5432/catequese"
 }
 
-model catequizando{
+model Catequizando{
   id Int @id @default(autoincrement())
   name String
   cpf Boolean @default(false)
@@ -28,5 +28,25 @@ model catequizando{
   matrimonio Boolean @default(false)
   matrimonioValid Boolean @default(false)
   docMatrimonio Boolean @default(false)
+  nomeTurma String
+  turma Turma @relation(fields: [nomeTurma], references: [nome])
 
+  @@map("catequizando")
+
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String
+
+  @@map("users")
+}
+
+model Turma {
+  id   Int @id @default(autoincrement())
+  nome String @unique
+  catequizandos Catequizando[]
+
+  @@map("turma")
 }

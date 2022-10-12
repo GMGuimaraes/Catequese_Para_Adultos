@@ -17,6 +17,21 @@ CREATE TABLE "catequizando" (
     "matrimonio" BOOLEAN NOT NULL DEFAULT false,
     "matrimonioValid" BOOLEAN NOT NULL DEFAULT false,
     "docMatrimonio" BOOLEAN NOT NULL DEFAULT false,
+    "nomeTurma" TEXT NOT NULL,
 
     CONSTRAINT "catequizando_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateTable
+CREATE TABLE "turma" (
+    "id" SERIAL NOT NULL,
+    "nome" TEXT NOT NULL,
+
+    CONSTRAINT "turma_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "turma_nome_key" ON "turma"("nome");
+
+-- AddForeignKey
+ALTER TABLE "catequizando" ADD CONSTRAINT "catequizando_nomeTurma_fkey" FOREIGN KEY ("nomeTurma") REFERENCES "turma"("nome") ON DELETE RESTRICT ON UPDATE CASCADE;
