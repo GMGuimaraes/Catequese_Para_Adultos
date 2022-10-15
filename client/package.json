@@ -7,11 +7,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-<<<<<<< HEAD
-=======
     "babel-loader": "^8.2.5",
     "bootstrap": "^5.2.2",
->>>>>>> ba7f18e161127fd46c36f613a37927f1658c3e4d
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "react": "^18.2.0",

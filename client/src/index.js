@@ -4,6 +4,7 @@ import Cadastrar from "./Cadastrar";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./Home";
 import Pesquisar from "./Pesquisar";
+import Recados from "./Recados";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -18,6 +19,7 @@ root.render(
       </Route>
       <Route path="/cadastrar" element={<Cadastrar></Cadastrar>}></Route>
       <Route path="/pesquisar" element={<Pesquisar></Pesquisar>}></Route>
+      <Route path="/recados" element={<Recados></Recados>}></Route>
     </Routes>
   </Router>
 );
