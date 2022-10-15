@@ -2,20 +2,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color:#d6ffff; 
+  background-color: #d6ffff;
   /*#F2FFEF;*/
-  
+
 }
 
-.Home{
-  background-color:#d6ffff; 
+.Home {
+  background-color: #d6ffff;
 }
-.form input{
+
+.form input {
   width: 300px;
   height: 20px;
   margin: 5px;
 }
-.home-nav{
+
+.home-nav {
   align-items: flex-start;
   display: flex;
   background-color: #6B8080;
@@ -28,8 +30,9 @@
   flex-flow: row nowrap;
   margin: 0 3.5rem;
 */
-  
+
 }
+
 /*.buttonLogin{
   margin-top: 20px;
   position: ;
@@ -41,14 +44,17 @@
 .buttonLogin:hover {
   cursor: pointer;
 }
-header{
+
+header {
   display: flex;
-  flex-direction: column;/*width: 100%;*/
+  flex-direction: column;
+  /*width: 100%;*/
   align-items: center;
   padding: 1rem;
   text-align: center;
 
 }
+
 .catequizandos {
   display: flex;
   align-items: center;
@@ -56,16 +62,16 @@ header{
   flex-direction: column;
 }
 
-.container{
+.container {
   align-items: baseline;
   display: grid;
   height: 100vh;
   grid-template-columns: 2fr 2fr;
   grid-template-rows: 0.2fr 1fr 0.2fr;
-  grid-template-areas: 
-  "nav nav"
-  "left right"
-  "footer footer";
+  grid-template-areas:
+    "nav nav"
+    "left right"
+    "footer footer";
   grid-gap: 0.5rem;
   /*/display: flex;
 <section className="jumbotron text-center">
@@ -74,7 +80,8 @@ header{
   flex-direction: column;*/
 
 }
-.nav{
+
+.nav {
   grid-area: nav;
   padding: 1rem;
   background-color: #ABCCCC;
@@ -86,16 +93,18 @@ header{
   color: #15346E;
 
 }
-footer{
+
+footer {
   grid-area: footer;
   text-align: center;
 }
-  /*
+
+/*
   display: block;
   width: 100%;
   position: absolute;
   */
- /*ul.navi {
+/*ul.navi {
 
        top: 50vh;
     left: 35vw;
@@ -106,7 +115,8 @@ footer{
     position: absolute;
     
 }*/
-ul.navi li, ul.navBar li {
+ul.navi li,
+ul.navBar li {
   border-width: 1px;
   height: 22px;
   padding: 0 18px 0 5px;
@@ -115,6 +125,7 @@ ul.navi li, ul.navBar li {
   justify-content: center;
   float: left;
 }
+
 ul.navi li.li1 {
   background: none;
   height: 22px;
@@ -151,6 +162,7 @@ ul.navi li a:hover {
   padding-left: 1rem;
 
 }
+
 /*img.imagemPincipal {
   padding-left: 16vw;
   weight: auto;
@@ -174,12 +186,13 @@ button.login {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
     border-radius: 15px;
 } */
-content *{
+content * {
   background-color: #F0FFFF;
   padding: 1rem;
   text-align: center;
-  
+
 }
+
 #left_ {
   grid-area: left;
   /* 
@@ -190,7 +203,8 @@ content *{
   padding-top: 2vh;
   width: 266px;*/
 }
-h2{
+
+h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
   font-weight: normal;
@@ -245,8 +259,9 @@ h2{
   background: no-repeat;
   color: #FF6600;
   font-weight: normal;
-}*/
-#right_ {
+}
+
+*/ #right_ {
   grid-area: right;
   /*padding: 1rem;
   height: 4rem;
@@ -261,7 +276,7 @@ h2{
   */
 }
 
- /*#right_ h2 {
+/*#right_ h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
   font-weight: normal;
@@ -278,7 +293,7 @@ h2{
 */
 
 #right_ p {
-  
+
   font: 13px/20px "Trebuchet MS";
   color: #3f1e1e;
   /*padding: 0 0 0 20px;
@@ -318,6 +333,7 @@ h2{
   color: #FF6600;
   font-weight: normal;
 }
+
 img.mainLogo {
   display: absolute;
   border-radius: 50px;
@@ -325,6 +341,7 @@ img.mainLogo {
   float: left;
   /*http://www.diocesepresidenteprudente.com.br/wp-content/uploads/2019/07/paroquia-nossa-senhora-regente-feijo-1-regiao-01.jpg*/
 }
+
 .requisitos {
   display: flex;
   flex-direction: row;
@@ -337,6 +354,7 @@ img.mainLogo {
   left: calc(50% - 47px/2 - 171.5px);
   top: calc(50% - 20px/2 - 21px)
 }
+
 /*
 #box {
   margin: -120px;

@@ -48,12 +48,14 @@ function App() {
   return (
     <div className="cadastrar">
       <div className="header">
-        <img
-          className="mainLogo"
-          src="https://static.wixstatic.com/media/a8fce9_9316f9cab9f24756942e7018593bf6aa~mv2.png/v1/crop/x_195,y_149,w_546,h_548/fill/w_432,h_434,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Untitled%20design%20(84).png"
-          width="40px"
-          height="40px"
-        ></img>
+        <a href="/">
+          <img
+            className="mainLogo"
+            src="https://static.wixstatic.com/media/a8fce9_9316f9cab9f24756942e7018593bf6aa~mv2.png/v1/crop/x_195,y_149,w_546,h_548/fill/w_432,h_434,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Untitled%20design%20(84).png"
+            width="40px"
+            height="40px"
+          ></img>
+        </a>
         <h1 className="mainTitle">Paróquia São João Bosco</h1>
       </div>
 
@@ -73,6 +75,8 @@ function App() {
                 }}
               />
             </Form.Group>
+
+            <p></p>
 
             <Form.Group className="mb-3" controlId="CPFCatequizando">
               <Form.Label>CPF: </Form.Label>

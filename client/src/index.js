@@ -3,8 +3,10 @@ import ReactDOM from "react-dom/client";
 import Cadastrar from "./Cadastrar";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./Home";
+import Pesquisar from "./Pesquisar";
+import PaginaAdm from "./PaginaAdm";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 window.loggedin = true; //TODO Login autenticado
 
@@ -16,7 +18,8 @@ root.render(
         Home
       </Route>
       <Route path="/cadastrar" element={<Cadastrar></Cadastrar>}></Route>
-      <Route path="/pesquisar" element={<h1>Pesquisar (TODO)</h1>}></Route>
+      <Route path="/pesquisar" element={<Pesquisar></Pesquisar>}></Route>
+      <Route path="/paginaadm" element={<PaginaAdm></PaginaAdm>}></Route>
     </Routes>
   </Router>
 );

@@ -1,0 +1,64 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js dev
+
+PATH: 
+  C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\MinGW\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;F:\wamp\bin\php\php7.4.9;F:\ComposerSetup;C:\ProgramData\chocolatey\bin;C:\Program Files\OpenJDK\openjdk-11.0.11_9\bin;C:\Program Files (x86)\Yarn\bin\;F:\Maven\apache-maven-3.8.1\bin;F:\Gradle\gradle-7.1.1\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\vih_s\AppData\Local\Microsoft\WindowsApps;C:\Users\vih_s\.dotnet\tools;C:\MinGW\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\vih_s\AppData\Roaming\Composer\vendor\bin;C:\Users\vih_s\AppData\Local\Yarn\bin;F:\Maven\apache-maven-3.8.1\bin;F:\Gradle\gradle-7.1.1\bin;C:\Users\vih_s\AppData\Roaming\npm;C:\Users\vih_s\AppData\Local\Programs\Microsoft VS Code\bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.17.6
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\vih_s\OneDrive\Documentos\UFMS\Construção de Software\v2\Catequese_Para_Adultos\server\package.json: Unexpected token < in JSON at position 161
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+  <<<<<<< HEAD
+      "start": "nodemon"
+  =======
+      "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
+  >>>>>>> ba7f18e161127fd46c36f613a37927f1658c3e4d
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@prisma/client": "^4.4.0",
+      "@types/express": "^4.17.14",
+      "cors": "^2.8.5",
+      "express": "^4.18.1",
+      "nodemon": "^2.0.20",
+      "pg": "^8.8.0",
+      "postgres": "^3.2.4",
+      "prisma": "^4.4.0",
+      "prisma-docs-generator": "^0.5.0",
+      "ts-node-dev": "^2.0.0"
+    },
+    "devDependencies": {
+      "@types/node": "^18.8.1",
+      "prettier-plugin-prisma": "^4.4.0",
+      "ts-node": "^10.9.1",
+      "typescript": "^4.8.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
