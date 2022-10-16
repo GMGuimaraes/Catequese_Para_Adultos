@@ -14,32 +14,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-<<<<<<< HEAD
-model Catequizando{
-  id Int @id @default(autoincrement())
-  name String
-  cpf Boolean @default(false)
-  rg Boolean @default(false)
-  comprovanteResidencia Boolean @default(false)
-  inicioCiclo DateTime
-  fimCiclo DateTime
-  batismo Boolean @default(false)
-  admissao Boolean @default(false)
-  eucaristia Boolean @default(false)
-  crisma Boolean @default(false)
-  docBatismo Boolean @default(false)
-  docAdmissao Boolean @default(false)
-  docEucaristia Boolean @default(false)
-  matrimonio Boolean @default(false)
-  matrimonioValid Boolean @default(false)
-  docMatrimonio Boolean @default(false)
-  nomeTurma String
-  turma Turma @relation(fields: [nomeTurma], references: [nome])
-
-  @@map("catequizando")
-=======
 //Iniciando o modelo do banco
->>>>>>> ba7f18e161127fd46c36f613a37927f1658c3e4d
 
 model Turma {
   idTurma          Int                @id @default(autoincrement())
@@ -60,7 +35,7 @@ model CatequeseAdultos {
 }
 
 model Pessoa {
-  cpf                   Int             @id
+  cpf                   Int                @id
   nome                  String
   rg                    Boolean
   comprovanteResidencia Boolean
@@ -91,7 +66,7 @@ model Sacramento {
 
 model PadrinhoMadrinha {
   pessoa                        Pessoa    @relation(fields: [cpfPessoa], references: [cpf])
-  cpfPessoa                     Int    @id
+  cpfPessoa                     Int       @id
   comprovanteBatismoAdmissao    Boolean
   comprovantePrimeiraEucaristia Boolean
   comprovanteCrisma             Boolean
@@ -142,17 +117,17 @@ model Crisma {
 }
 
 model User {
-  id Int @id @default(autoincrement())
+  id    Int    @id @default(autoincrement())
   email String @unique
-  name String
+  name  String
 
   @@map("users")
 }
 
-model Turma {
-  id   Int @id @default(autoincrement())
-  nome String @unique
-  catequizandos Catequizando[]
+//model Turma {
+//id            Int            @id @default(autoincrement())
+//nome          String         @unique
+//catequizandos Catequizando[]
 
-  @@map("turma")
-}
+//@@map("turma")
+//}*/

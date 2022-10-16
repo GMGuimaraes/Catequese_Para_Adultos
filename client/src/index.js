@@ -5,6 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import Home from "./Home";
 import Pesquisar from "./Pesquisar";
 import PaginaAdm from "./PaginaAdm";
+import Recados from "./Recados";
+import CadastrarTurma from "./CadastrarTurma";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -20,6 +22,11 @@ root.render(
       <Route path="/cadastrar" element={<Cadastrar></Cadastrar>}></Route>
       <Route path="/pesquisar" element={<Pesquisar></Pesquisar>}></Route>
       <Route path="/paginaadm" element={<PaginaAdm></PaginaAdm>}></Route>
+      <Route path="/recados" element={<Recados></Recados>}></Route>
+      <Route
+        path="/cadastrarTurma"
+        element={<CadastrarTurma></CadastrarTurma>}
+      ></Route>
     </Routes>
   </Router>
 );
