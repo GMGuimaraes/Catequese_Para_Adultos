@@ -3,16 +3,16 @@ import { prismaClient } from "../../database/prismaCliente";
 
 export class CreatePessoaController{
     async handle(request: Request, response: Response) {
-        const { cpf, nome, rg, comprovanteResidencia, casado, idade } = request.body;
+        const { nome, cpf, rg, comprovanteResidencia, casado, dataNasc } = request.body;
 
         const pessoa = await prismaClient.pessoa.create({
             data: {
-                cpf,
                 nome,
+                cpf,
                 rg,
                 comprovanteResidencia,
                 casado,
-                idade
+                dataNasc
             }
         })
 

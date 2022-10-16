@@ -3,12 +3,12 @@ import { prismaClient } from "../../database/prismaCliente";
 
 export class CreateBatismoController{
     async handle(request: Request, response: Response) {
-        const { idSacramento, cpfPadrinhoMadrinha } = request.body;
+        const { idSacramento, idPadrinhoMadrinha } = request.body;
 
         const batismo = await prismaClient.batismo.create({
             data: {
                 idSacramento,
-                cpfPadrinhoMadrinha
+                idPadrinhoMadrinha
             }
         })
 

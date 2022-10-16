@@ -3,11 +3,11 @@ import { prismaClient } from "../../database/prismaCliente";
 
 export class FindPadrinhoMadrinhaController {
     async handle(request: Request, response: Response) {
-        const { cpfPessoa } = request.params;
+        const { idPessoa } = request.params;
 
         const padrinhoMadrinha = await prismaClient.padrinhoMadrinha.findUnique({
             where: {
-                cpfPessoa: +cpfPessoa,
+                idPessoa: +idPessoa,
             },
         });
         return response.json(padrinhoMadrinha);

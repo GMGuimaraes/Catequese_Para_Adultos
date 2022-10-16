@@ -4,14 +4,14 @@ import { prismaClient } from "../../database/prismaCliente";
 export class UpdateSacramentoController {
     async handle(request: Request, response: Response) {
         const { idSacramento } = request.params;
-        const { cpfPessoa, idTurma, dataInicioCiclo, dataFimCiclo, dataMissa } = request.body;
+        const { idPessoa, idTurma, dataInicioCiclo, dataFimCiclo, dataMissa } = request.body;
 
         const sacramento = await prismaClient.sacramento.update({
             where: {
                 idSacramento: +idSacramento,
             },
             data: {
-                cpfPessoa,
+                idPessoa,
                 idTurma,
                 dataInicioCiclo,
                 dataFimCiclo,

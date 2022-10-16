@@ -3,19 +3,20 @@ import { prismaClient } from "../../database/prismaCliente";
 
 export class UpdatePessoaController {
     async handle(request: Request, response: Response) {
-        const { cpf } = request.params;
-        const { nome, rg, comprovanteResidencia, casado, idade } = request.body;
+        const { id } = request.params;
+        const { nome, cpf, rg, comprovanteResidencia, casado, dataNasc } = request.body;
 
         const pessoa = await prismaClient.pessoa.update({
             where: {
-                cpf: +cpf,
+                id: +id,
             },
             data: {
                 nome,
+                cpf,
                 rg,
                 comprovanteResidencia,
                 casado,
-                idade
+                dataNasc
             }
         });
         return response.json(pessoa);

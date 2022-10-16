@@ -4,7 +4,7 @@ import { prismaClient } from "../../database/prismaCliente";
 export class UpdateCrismaController {
     async handle(request: Request, response: Response) {
         const { idSacramento } = request.params;
-        const { comprovanteBatismoAdmissao, comprovanteCasamento, cpfPadrinhoMadrinha } = request.body;
+        const { comprovanteBatismoAdmissao, comprovanteCasamento, idPadrinhoMadrinha } = request.body;
 
         const crisma = await prismaClient.crisma.update({
             where: {
@@ -13,7 +13,7 @@ export class UpdateCrismaController {
             data: {
                 comprovanteBatismoAdmissao,
                 comprovanteCasamento,
-                cpfPadrinhoMadrinha
+                idPadrinhoMadrinha
             }
         });
         return response.json(crisma);

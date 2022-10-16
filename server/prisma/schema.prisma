@@ -35,22 +35,34 @@ model CatequeseAdultos {
 }
 
 model Pessoa {
-  cpf                   Int                @id
+  id                    Int                @id @default(autoincrement())
   nome                  String
+  cpf                   Boolean
   rg                    Boolean
   comprovanteResidencia Boolean
   casado                Boolean
-  idade                 Int
+  dataNasc              DateTime
+  User                  User[]
   Sacramento            Sacramento[]
   PadrinhoMadrinha      PadrinhoMadrinha[]
 
   @@map("pessoas")
 }
 
+model User {
+  pessoa    Pessoa @relation(fields: [idPessoa], references: [id])
+  idPessoa  Int    @id
+  email     String @unique
+  password  String
+  permissao Int
+
+  @@map("users")
+}
+
 model Sacramento {
   idSacramento       Int                  @id @default(autoincrement())
-  pessoa             Pessoa               @relation(fields: [cpfPessoa], references: [cpf])
-  cpfPessoa          Int
+  pessoa             Pessoa               @relation(fields: [idPessoa], references: [id])
+  idPessoa           Int
   turma              Turma                @relation(fields: [idTurma], references: [idTurma])
   idTurma            Int
   dataInicioCiclo    DateTime
@@ -65,8 +77,8 @@ model Sacramento {
 }
 
 model PadrinhoMadrinha {
-  pessoa                        Pessoa    @relation(fields: [cpfPessoa], references: [cpf])
-  cpfPessoa                     Int       @id
+  pessoa                        Pessoa    @relation(fields: [idPessoa], references: [id])
+  idPessoa                      Int       @id
   comprovanteBatismoAdmissao    Boolean
   comprovantePrimeiraEucaristia Boolean
   comprovanteCrisma             Boolean
@@ -78,10 +90,10 @@ model PadrinhoMadrinha {
 }
 
 model Batismo {
-  sacramento          Sacramento       @relation(fields: [idSacramento], references: [idSacramento])
-  idSacramento        Int              @id
-  padrinhoMadrinha    PadrinhoMadrinha @relation(fields: [cpfPadrinhoMadrinha], references: [cpfPessoa])
-  cpfPadrinhoMadrinha Int
+  sacramento         Sacramento       @relation(fields: [idSacramento], references: [idSacramento])
+  idSacramento       Int              @id
+  padrinhoMadrinha   PadrinhoMadrinha @relation(fields: [idPadrinhoMadrinha], references: [idPessoa])
+  idPadrinhoMadrinha Int
 
   @@map("batismos")
 }
@@ -110,18 +122,10 @@ model Crisma {
   idSacramento               Int              @id
   comprovanteBatismoAdmissao Boolean
   comprovanteCasamento       Boolean
-  padrinhoMadrinha           PadrinhoMadrinha @relation(fields: [cpfPadrinhoMadrinha], references: [cpfPessoa])
-  cpfPadrinhoMadrinha        Int
+  padrinhoMadrinha           PadrinhoMadrinha @relation(fields: [idPadrinhoMadrinha], references: [idPessoa])
+  idPadrinhoMadrinha         Int
 
-  @@map("Crismas")
-}
-
-model User {
-  id    Int    @id @default(autoincrement())
-  email String @unique
-  name  String
-
-  @@map("users")
+  @@map("crismas")
 }
 
 //model Turma {
