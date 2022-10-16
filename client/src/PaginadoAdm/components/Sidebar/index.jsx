@@ -1,43 +1,41 @@
-import React from 'react'
-import { Container, Content } from './styles'
-import { 
-  FaTimes, 
-  FaHome, 
-  FaEnvelope, 
-  FaLongArrowAltRight, 
-  FaUserAlt, 
-  FaIdCardAlt, 
-  FaRegFileAlt,
-  FaRegCalendarAlt,
-  FaChartBar
-} from 'react-icons/fa'
-import { IoIosAddCircle } from "react-icons/io"
+import React from "react";
+import { Container, Content } from "./styles";
+import { FaTimes, FaRegStickyNote, FaUserAlt, FaUsers } from "react-icons/fa";
+import { IoIosAddCircle } from "react-icons/io";
+import { FiLogOut } from "react-icons/fi";
 
-import SidebarItem from '../SidebarItem'
+import SidebarItem from "../SidebarItem";
 
 const Sidebar = ({ active }) => {
-
   const closeSidebar = () => {
-    active(false)
-  }
+    active(false);
+  };
 
   return (
     <Container sidebar={active}>
-      <FaTimes onClick={closeSidebar} />  
+      <FaTimes onClick={closeSidebar} />
       <Content>
-        <a href='/cadastrar'>     
-        <SidebarItem Icon={IoIosAddCircle} Text="Cadastrar Catequizando" />
-        </a> 
-        <a href='/cadastrarTurma'>
-        <SidebarItem Icon={IoIosAddCircle} Text="Cadastrar Turma" />
+        <a href="/cadastrar">
+          <SidebarItem Icon={IoIosAddCircle} Text="Cadastrar Catequizando" />
         </a>
-        <SidebarItem Icon={FaUserAlt} Text="Consultar Catequizandos" />
+        <a href="/cadastrarTurma">
+          <SidebarItem Icon={IoIosAddCircle} Text="Cadastrar Turma" />
+        </a>
+        <a href="/catequizando">
+          <SidebarItem Icon={FaUserAlt} Text="Consultar Catequizandos" />
+        </a>
+        <a href="/turma">
+          <SidebarItem Icon={FaUsers} Text="Consultar Turmas" />
+        </a>
+        <a href="/recados">
+          <SidebarItem Icon={FaRegStickyNote} Text="Recados" />
+        </a>
         <a href="/">
-        <SidebarItem Icon={FaLongArrowAltRight} Text="Sair" />
-      </a>
+          <SidebarItem Icon={FiLogOut} Text="Sair" />
+        </a>
       </Content>
     </Container>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

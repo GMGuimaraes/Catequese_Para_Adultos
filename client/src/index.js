@@ -6,9 +6,11 @@ import Home from "./Home";
 import Pesquisar from "./Pesquisar";
 import PaginaAdm from "./PaginaAdm";
 import Recados from "./Recados";
+import Turma from "./Turma";
+import Catequizando from "./Catequizando";
 import CadastrarTurma from "./CadastrarTurma";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-//import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 window.loggedin = true; //TODO Login autenticado
 
@@ -26,6 +28,11 @@ root.render(
       <Route
         path="/cadastrarTurma"
         element={<CadastrarTurma></CadastrarTurma>}
+      ></Route>
+      <Route path="/turma" element={<Turma></Turma>}></Route>
+      <Route
+        path="/catequizando"
+        element={<Catequizando></Catequizando>}
       ></Route>
     </Routes>
   </Router>
