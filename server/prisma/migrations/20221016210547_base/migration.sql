@@ -1,17 +1,11 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "turmas" (
+    "idTurma" SERIAL NOT NULL,
+    "dataInicio" TIMESTAMP(3) NOT NULL,
+    "dataFim" TIMESTAMP(3) NOT NULL,
 
-  - You are about to drop the column `DataFim` on the `turmas` table. All the data in the column will be lost.
-  - You are about to drop the column `DataInicio` on the `turmas` table. All the data in the column will be lost.
-  - Added the required column `dataFim` to the `turmas` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `dataInicio` to the `turmas` table without a default value. This is not possible if the table is not empty.
-
-*/
--- AlterTable
-ALTER TABLE "turmas" DROP COLUMN "DataFim",
-DROP COLUMN "DataInicio",
-ADD COLUMN     "dataFim" TIMESTAMP(3) NOT NULL,
-ADD COLUMN     "dataInicio" TIMESTAMP(3) NOT NULL;
+    CONSTRAINT "turmas_pkey" PRIMARY KEY ("idTurma")
+);
 
 -- CreateTable
 CREATE TABLE "catequeseAdultos" (
@@ -23,20 +17,31 @@ CREATE TABLE "catequeseAdultos" (
 
 -- CreateTable
 CREATE TABLE "pessoas" (
-    "cpf" INTEGER NOT NULL,
+    "id" SERIAL NOT NULL,
     "nome" TEXT NOT NULL,
+    "cpf" BOOLEAN NOT NULL,
     "rg" BOOLEAN NOT NULL,
     "comprovanteResidencia" BOOLEAN NOT NULL,
     "casado" BOOLEAN NOT NULL,
-    "idade" INTEGER NOT NULL,
+    "dataNasc" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "pessoas_pkey" PRIMARY KEY ("cpf")
+    CONSTRAINT "pessoas_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "users" (
+    "idPessoa" INTEGER NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "permissao" INTEGER NOT NULL,
+
+    CONSTRAINT "users_pkey" PRIMARY KEY ("idPessoa")
 );
 
 -- CreateTable
 CREATE TABLE "sacramentos" (
-    "idSacramento" INTEGER NOT NULL,
-    "cpfPessoa" INTEGER NOT NULL,
+    "idSacramento" SERIAL NOT NULL,
+    "idPessoa" INTEGER NOT NULL,
     "idTurma" INTEGER NOT NULL,
     "dataInicioCiclo" TIMESTAMP(3) NOT NULL,
     "dataFimCiclo" TIMESTAMP(3) NOT NULL,
@@ -47,19 +52,19 @@ CREATE TABLE "sacramentos" (
 
 -- CreateTable
 CREATE TABLE "padrinhosMadrinhas" (
-    "cpfPessoa" INTEGER NOT NULL,
+    "idPessoa" INTEGER NOT NULL,
     "comprovanteBatismoAdmissao" BOOLEAN NOT NULL,
     "comprovantePrimeiraEucaristia" BOOLEAN NOT NULL,
     "comprovanteCrisma" BOOLEAN NOT NULL,
     "comprovanteCasamento" BOOLEAN NOT NULL,
 
-    CONSTRAINT "padrinhosMadrinhas_pkey" PRIMARY KEY ("cpfPessoa")
+    CONSTRAINT "padrinhosMadrinhas_pkey" PRIMARY KEY ("idPessoa")
 );
 
 -- CreateTable
 CREATE TABLE "batismos" (
     "idSacramento" INTEGER NOT NULL,
-    "cpfPadrinhoMadrinha" INTEGER NOT NULL,
+    "idPadrinhoMadrinha" INTEGER NOT NULL,
 
     CONSTRAINT "batismos_pkey" PRIMARY KEY ("idSacramento")
 );
@@ -74,51 +79,57 @@ CREATE TABLE "admissoes" (
 );
 
 -- CreateTable
-CREATE TABLE "primeiraEucaristias" (
+CREATE TABLE "eucaristiaPrimeira" (
     "idSacramento" INTEGER NOT NULL,
     "comprovanteBatismoAdmissao" BOOLEAN NOT NULL,
     "comprovanteCasamento" BOOLEAN NOT NULL,
-    "primeiraEucaristia" TEXT NOT NULL,
+    "Eucaristia" TEXT NOT NULL,
 
-    CONSTRAINT "primeiraEucaristias_pkey" PRIMARY KEY ("idSacramento")
+    CONSTRAINT "eucaristiaPrimeira_pkey" PRIMARY KEY ("idSacramento")
 );
 
 -- CreateTable
-CREATE TABLE "Crismas" (
+CREATE TABLE "crismas" (
     "idSacramento" INTEGER NOT NULL,
     "comprovanteBatismoAdmissao" BOOLEAN NOT NULL,
     "comprovanteCasamento" BOOLEAN NOT NULL,
-    "cpfPadrinhoMadrinha" INTEGER NOT NULL,
+    "idPadrinhoMadrinha" INTEGER NOT NULL,
 
-    CONSTRAINT "Crismas_pkey" PRIMARY KEY ("idSacramento")
+    CONSTRAINT "crismas_pkey" PRIMARY KEY ("idSacramento")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- AddForeignKey
 ALTER TABLE "catequeseAdultos" ADD CONSTRAINT "catequeseAdultos_idTurma_fkey" FOREIGN KEY ("idTurma") REFERENCES "turmas"("idTurma") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "sacramentos" ADD CONSTRAINT "sacramentos_cpfPessoa_fkey" FOREIGN KEY ("cpfPessoa") REFERENCES "pessoas"("cpf") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "users" ADD CONSTRAINT "users_idPessoa_fkey" FOREIGN KEY ("idPessoa") REFERENCES "pessoas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "sacramentos" ADD CONSTRAINT "sacramentos_idPessoa_fkey" FOREIGN KEY ("idPessoa") REFERENCES "pessoas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "sacramentos" ADD CONSTRAINT "sacramentos_idTurma_fkey" FOREIGN KEY ("idTurma") REFERENCES "turmas"("idTurma") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "padrinhosMadrinhas" ADD CONSTRAINT "padrinhosMadrinhas_cpfPessoa_fkey" FOREIGN KEY ("cpfPessoa") REFERENCES "pessoas"("cpf") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "padrinhosMadrinhas" ADD CONSTRAINT "padrinhosMadrinhas_idPessoa_fkey" FOREIGN KEY ("idPessoa") REFERENCES "pessoas"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "batismos" ADD CONSTRAINT "batismos_idSacramento_fkey" FOREIGN KEY ("idSacramento") REFERENCES "sacramentos"("idSacramento") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "batismos" ADD CONSTRAINT "batismos_cpfPadrinhoMadrinha_fkey" FOREIGN KEY ("cpfPadrinhoMadrinha") REFERENCES "padrinhosMadrinhas"("cpfPessoa") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "batismos" ADD CONSTRAINT "batismos_idPadrinhoMadrinha_fkey" FOREIGN KEY ("idPadrinhoMadrinha") REFERENCES "padrinhosMadrinhas"("idPessoa") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "admissoes" ADD CONSTRAINT "admissoes_idSacramento_fkey" FOREIGN KEY ("idSacramento") REFERENCES "sacramentos"("idSacramento") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "primeiraEucaristias" ADD CONSTRAINT "primeiraEucaristias_idSacramento_fkey" FOREIGN KEY ("idSacramento") REFERENCES "sacramentos"("idSacramento") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "eucaristiaPrimeira" ADD CONSTRAINT "eucaristiaPrimeira_idSacramento_fkey" FOREIGN KEY ("idSacramento") REFERENCES "sacramentos"("idSacramento") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Crismas" ADD CONSTRAINT "Crismas_idSacramento_fkey" FOREIGN KEY ("idSacramento") REFERENCES "sacramentos"("idSacramento") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "crismas" ADD CONSTRAINT "crismas_idSacramento_fkey" FOREIGN KEY ("idSacramento") REFERENCES "sacramentos"("idSacramento") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Crismas" ADD CONSTRAINT "Crismas_cpfPadrinhoMadrinha_fkey" FOREIGN KEY ("cpfPadrinhoMadrinha") REFERENCES "padrinhosMadrinhas"("cpfPessoa") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "crismas" ADD CONSTRAINT "crismas_idPadrinhoMadrinha_fkey" FOREIGN KEY ("idPadrinhoMadrinha") REFERENCES "padrinhosMadrinhas"("idPessoa") ON DELETE RESTRICT ON UPDATE CASCADE;
