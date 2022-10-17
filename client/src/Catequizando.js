@@ -4,6 +4,7 @@ import "./App.css";
 import turma from "./api/api";
 import Header from "./PaginadoAdm/components/Header";
 
+
 class Catequizando extends Component {
   state = {
     catequizandos: [],
@@ -48,7 +49,7 @@ class Catequizando extends Component {
                   <p></p>
                   <h3>
                     Data de Nascimento:
-                    {catequizando.dataNasc}
+                    {new Date(catequizando.dataNasc).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
                   </h3>
                   <p></p>
                 </li>

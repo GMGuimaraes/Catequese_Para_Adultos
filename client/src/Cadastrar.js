@@ -50,9 +50,9 @@ class CadastroCatequizando extends React.Component {
       comprovanteResidencia: false,
       casado: false,
       dataNasc: '2000-01-01T00:00:00.000Z',
-      dia: 1,
-      mes: 1,
-      ano: 2000,
+      dia: '1',
+      mes: '1',
+      ano: '2000',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -99,7 +99,7 @@ class CadastroCatequizando extends React.Component {
     if (d.length < 2) {
       d = '0' + d;
     }
-    var data = (a + '-' + m + '-' + d + 'T00:00:00.000Z');
+    var data = (a + '-' + m + '-' + d + 'T01:00:00.000Z');
     console.log(data);
     return (data);
   };
