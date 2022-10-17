@@ -25,6 +25,7 @@ root.render(
       <Route path="/pesquisar" element={<Pesquisar></Pesquisar>}></Route>
       <Route path="/paginaadm" element={<PaginaAdm></PaginaAdm>}></Route>
       <Route path="/recados" element={<Recados></Recados>}></Route>
+      <Route path="/cadastrarTurma" element={<CadastrarTurma></CadastrarTurma>}></Route>
       <Route
         path="/cadastrarTurma"
         element={<CadastrarTurma></CadastrarTurma>}

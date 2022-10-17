@@ -5,20 +5,20 @@ import "./Navbar.css";
 function Navbar() {
   if (window.loggedin) {
     return (
-      <div>
+      <div id="navbar">
         <nav className="navbar">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link id='home' to="/">Home</Link>
             </li>
             <li>
-              <Link to="/cadastrar">Cadastrar</Link>
+              <Link id='cadastrar' to="/cadastrar">Cadastrar</Link>
             </li>
             <li>
-              <Link to="/pesquisar">Pesquisar</Link>
+              <Link id='pesquisar' to="/pesquisar">Pesquisar</Link>
             </li>
             <li>
-              <Link to="/recados">Recados</Link>
+              <Link id='recados' to="/recados">Recados</Link>
             </li>
           </ul>
         </nav>

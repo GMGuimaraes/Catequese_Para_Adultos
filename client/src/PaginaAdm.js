@@ -10,7 +10,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 function PaginaAdm() {
   return (
     <div className="PagAdm">
-      <Header />
       <h1>Paróquia São João Bosco</h1>
     </div>
   );

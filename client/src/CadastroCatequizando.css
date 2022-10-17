@@ -68,6 +68,12 @@ ul.navBar{
     background: none;
     font: 14px/21px Arial, Helvetica, sans-serif;
 }
+a {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+
 /*antes das alterações
   const consultaCatequizandos = "http://localhost:4003/";
   const getCatequizando = () => {

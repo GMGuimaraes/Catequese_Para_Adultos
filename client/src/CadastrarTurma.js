@@ -31,7 +31,6 @@ function CadastrarTurma() {
 
   return (
     <div className="cadastrar">
-      <Header />
       <div className="row">
         <div className="column side"></div>
         <div className="column middle">
