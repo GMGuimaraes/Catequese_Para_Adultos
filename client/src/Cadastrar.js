@@ -75,21 +75,22 @@ class CadastroCatequizando extends React.Component {
     var dataConvertida = this.converterData(state.dia, state.mes, state.ano);
     this.setState({
       dataNasc: dataConvertida
+    }, () => {
+      axios.post(catequizandos, {
+        nome: this.state.nome,
+        cpf: this.state.cpf,
+        rg: this.state.rg,
+        comprovanteResidencia: this.state.comprovanteResidencia,
+        casado: this.state.casado,
+        dataNasc: this.state.dataNasc,
+      }).then((response) => {
+        console.log("sucess");
+        alert("Catequizando cadastrado com sucesso!");
+        //history.push("/paginaadm");
+      }).catch((error) => console.log(error));
     });
 
-    axios.post(catequizandos, {
-      nome: state.nome,
-      cpf: state.cpf,
-      rg: state.rg,
-      comprovanteResidencia: state.comprovanteResidencia,
-      casado: state.casado,
-      dataNasc: state.dataNasc,
-    }).then((response) => {
-      console.log("sucess");
-      alert("Catequizando cadastrado com sucesso!");
-      //history.push("/paginaadm");
-    })
-      .catch((error) => console.log(error));
+
   };
   converterData = (d, m, a) => {
     if (m.length < 2) {
