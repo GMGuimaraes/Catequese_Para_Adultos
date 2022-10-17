@@ -29,8 +29,8 @@ function CadastrarTurma() {
   const turma = "http://localhost:4003/create/turma";
   const addTurma = () => {
     Axios.post(turma, {
-      dataInicio:"2022-01-01T12:00" ,
-      dataFim:"2022-01-01T12:00",
+      dataInicio: "2033-02-12T09:45:00.000Z" ,
+      dataFim: "2033-02-12T09:45:00.000Z",
     })
       .then((response) => {
         console.log("sucess");
@@ -52,7 +52,7 @@ function CadastrarTurma() {
             <input
               type="datetime-local"
               name="dataInicio"
-              formValues="2022-01-01T12:00"
+              value="2022-12-11T01:10"
               onChange={handleInputChange}
               value={formValues.dataInicio}
             />
@@ -65,7 +65,7 @@ function CadastrarTurma() {
             <input
               type="datetime-local"
               name="dataFim"
-              formValues="2022-01-01T12:00"
+              value="2022-12-11T01:11"
               onChange={handleInputChange}
               value={formValues.dataFim}
             />
