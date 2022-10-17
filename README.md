@@ -3,9 +3,9 @@
 Precisamos que tenha instalado o Node.js com o npm e o Postgresql.
 Caso não tenha, por favor instale-os.
 
-Node.js com o npm
+Node.js 16.18.0 (com npm 8.19.2)
 
-- https://nodejs.org/en/download/current/
+- https://nodejs.org/en/download/
 
 Postgresql - Caso esteja instalando, anote a senha e a porta, vamos precisar mais pra frente. :warning:
 
@@ -86,5 +86,10 @@ yarn dev
 
 # Execute a aplicação Catequese_Para_Adultos
 
-Para abrir a página de Cadastro do Catequizando, acesse a pasta server e execute no terminal o comando: yarn start
-Por ultimo, basta acessar http://localhost:3000/ para interagir com a aplocação.
+Para abrir a aplicação, acesse a pasta /client e execute no terminal o comando:
+
+```
+yarn start
+```
+
+Por ultimo, caso não abra automaticamente, basta acessar http://localhost:3000/ para interagir com a aplicação.
