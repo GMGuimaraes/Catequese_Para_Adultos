@@ -30,7 +30,7 @@ Entre na pasta client e execute
 
 # Rode as migrations
 
-- yanr prisma generate
+- yarn prisma generate
 - yarn prisma migrate dev
 
 # Execute o Servidor
