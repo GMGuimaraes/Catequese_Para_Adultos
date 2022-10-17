@@ -87,3 +87,4 @@ yarn dev
 # Execute a aplicação Catequese_Para_Adultos
 
 Para abrir a página de Cadastro do Catequizando, acesse a pasta server e execute no terminal o comando: yarn start
+Por ultimo, basta acessar http://localhost:3000/ para interagir com a aplocação.
