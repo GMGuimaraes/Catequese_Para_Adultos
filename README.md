@@ -16,36 +16,42 @@ Postgresql - Caso esteja instalando, anote a senha e a porta, vamos precisar mai
 Caso já possua o npm instalado, certifique-se de atualizar o mesmo.
 Abra o terminal e execute o seguinte comando:
 
-$ npm install -g npm
+```
+npm install -g npm
+```
 
 # Agora vamos instalar as extensões do server e do cliente
 
 Pelo terminal, navegue ate a pasta /server/ (cd server)
 Execute o seguinte comando. Ele irá instalar todos os pacotes necessarios.
 
-$ npm i
+```
+npm i
+```
 
 Ao termino e ainda pelo terminal
 Volte à pasta raiz (cd ..) e entre na pasta client (cd client)
 Execute o comando a seguir
 
-$ npm i
+```
+npm i
+```
 
 # Configure o acesso ao Postgres
 
 Precisamos fazer acesso ao banco através da nossa API.
 Precisamos de algumas informações do banco instalado.
 
-- <USER>: Usuario do seu banco. Padrão: postgres
-- <PASSWORD>: A senha criada durante a configuração.
-- <HOST>: O nome da maquina onde o banco está instalado, se for na mesma maquina, use localhost
-- <PORT>: A porta configurada durante a instalação. Padrão: 5432
-- <DATABASE>: O nome para a base de dados que desejar. Recomendamos catequese
-- <SCHEMA>: O schema usado para as tabelas. Recomendamos catequese.
+- {USER}: Usuario do seu banco. Padrão: postgres
+- {PASSWORD}: A senha criada durante a configuração.
+- {HOST}: O nome da maquina onde o banco está instalado, se for na mesma maquina, use localhost
+- {PORT}: A porta configurada durante a instalação. Padrão: 5432
+- {DATABASE}: O nome para a base de dados que desejar. Recomendamos catequese
+- {SCHEMA}: O schema usado para as tabelas. Recomendamos catequese.
 
 Em posse dessas informações, monte o endereço de acesso substituindo os campos chaves pelos seus dados de acesso. :heavy_check_mark:
 
-DATABASE_URL=postgresql://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE>?schema=<SCHEMA>
+DATABASE_URL=postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}?schema={SCHEMA}
 
 Exemplo:
 DATABASE_URL="postgresql://postgres:1234@localhost:5432/catequese?schema=catequese"
@@ -59,15 +65,22 @@ Salve e feche o editor de texto.
 Com o acesso do banco configurado, vamos efetivamente criar a base de dados.
 Para isso, pelo terminal, navegue até a pasta server (cd server) e execute os seguintes comandos:
 
-$ yarn prisma generate
-$ yarn prisma migrate dev
+```
+yarn prisma generate
+```
+
+```
+yarn prisma migrate dev
+```
 
 # Execute o Servidor
 
 Pronto, tudo configurado, agora basta executar o servidor.
 Ainda na pasta server, execute o comando:
 
-$ yarn dev
+```
+yarn dev
+```
 
 :trophy: Pronto, servidor rodando.
 
