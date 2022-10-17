@@ -29,7 +29,7 @@ const CadastroCatequizando = () => {
   const [casado, setCasado] = useState(false);
   const [idade, setIdade] = useState("");*/
   //const [catequizandosList, setCatequizandosList] = useState([]);
-
+  
   const catequizandos = "http://localhost:4003/create/pessoa";
   const addCatequizando = () => {
     Axios.post(catequizandos, {
@@ -58,11 +58,11 @@ const CadastroCatequizando = () => {
 
   return (
     <div className="cadastrar">
-      <Header />
       <h1 className="mainTitle">Paróquia São João Bosco</h1>
       <div className="row">
         <div className="column side"></div>
         <div className="column middle">
+          <Navbar></Navbar>
           <h2>Cadastro do Catequizando</h2>
           <Form>
             <Form.Group className="mb-3">
