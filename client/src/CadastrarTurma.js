@@ -52,7 +52,6 @@ function CadastrarTurma() {
             <input
               type="datetime-local"
               name="dataInicio"
-              value="2022-12-11T01:10"
               onChange={handleInputChange}
               value={formValues.dataInicio}
             />
