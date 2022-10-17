@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { prismaClient } from "../../database/prismaCliente";
 
-export class CreatePessoaController{
+export class CreatePessoaController {
     async handle(request: Request, response: Response) {
         const { nome, cpf, rg, comprovanteResidencia, casado, dataNasc } = request.body;
 
