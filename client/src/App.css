@@ -115,6 +115,9 @@ footer {
     position: absolute;
     
 }*/
+ul{
+  list-style: none;
+}
 ul.navi li,
 ul.navBar li {
   border-width: 1px;
@@ -203,7 +206,9 @@ content * {
   padding-top: 2vh;
   width: 266px;*/
 }
-
+h1 {
+  text-align: center;
+}
 h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
