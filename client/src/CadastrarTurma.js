@@ -27,10 +27,11 @@ function CadastrarTurma() {
     console.log("OK");
   };
   const turma = "http://localhost:4003/create/turma";
+  const readTurma = "http://localhost:4003/readall/turma";
   const addTurma = () => {
     Axios.post(turma, {
-      dataInicio: "2033-02-12T09:45:00.000Z" ,
-      dataFim: "2033-02-12T09:45:00.000Z",
+      dataInicio: "2000-01-01T00:00:00.000Z" ,
+      dataFim: "2000-01-01T00:00:00.000Z",
     })
       .then((response) => {
         console.log("sucess");
@@ -39,13 +40,24 @@ function CadastrarTurma() {
       })
       .catch((error) => console.log(error));
   };
+  const readAllTurma = () => {
+    return fetch(readTurma)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        //console.log(responseJson);
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   console.log("..FormValues", formValues);
-
   return (
     <div className="cadastrar">
       <div className="row">
         <div className="column side"></div>
         <div className="column middle">
+          <a href="/cadastrar">voltar</a>
           <h2>Cadastro de Turmas</h2>
           <form onSubmit={handleSubmit}>
             <label>Data Inicial: </label>
@@ -75,10 +87,23 @@ function CadastrarTurma() {
             <Button onClick={addTurma} variant="primary" type="submit">
               Cadastrar
             </Button>
+            <Button onClick={readAllTurma} variant="primary" type="submit">
+              Ver Turmas
+            </Button>
+            <Button variant="primary" type="submit">
+              Deletar
+            </Button>
           </div>
         </div>
         <div className="column side"></div>
       </div>
+      <div>{Object.values(formValues).map(turmas => (
+        <tr key={turmas.idTurma}>
+          <td>{turmas.idTurma}</td>
+          <td>{turmas.dataInicio}</td>
+          <td>{turmas.dataFim}</td>
+        </tr>
+      ))}</div>
       <footer>
         <p>Desenvolvido pelo Grupo 2 - Construção de Software - 2022</p>
       </footer>
