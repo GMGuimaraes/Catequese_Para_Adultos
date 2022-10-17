@@ -28,6 +28,7 @@ function CadastrarTurma() {
   };
   const turma = "http://localhost:4003/create/turma";
   const readTurma = "http://localhost:4003/readall/turma";
+  const delTurma ="http://localhost:4003/delete/turma/";
   const addTurma = () => {
     Axios.post(turma, {
       dataInicio: "2000-01-01T00:00:00.000Z" ,
@@ -40,11 +41,23 @@ function CadastrarTurma() {
       })
       .catch((error) => console.log(error));
   };
+    const deleteTurma = () => {
+    Axios.post(delTurma, {
+      dataInicio: "2000-01-01T00:00:00.000Z" ,
+      dataFim: "2000-01-01T00:00:00.000Z",
+    })
+      .then((response) => {
+        console.log("sucess");
+        alert("turma deletada com sucesso!");
+      })
+      .catch((error) => console.log(error));
+  };
   const readAllTurma = () => {
     return fetch(readTurma)
       .then((response) => response.json())
       .then((responseJson) => {
         //console.log(responseJson);
+        //console.log(Object.keys(responseJson).length);
         return responseJson;
       })
       .catch((error) => {
@@ -90,7 +103,7 @@ function CadastrarTurma() {
             <Button onClick={readAllTurma} variant="primary" type="submit">
               Ver Turmas
             </Button>
-            <Button variant="primary" type="submit">
+            <Button onClick={deleteTurma} variant="primary" type="submit">
               Deletar
             </Button>
           </div>
