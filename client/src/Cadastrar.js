@@ -56,7 +56,7 @@ const CadastroCatequizando = () => {
       rg: false,
       comprovanteResidencia: false,
       casado: false,
-      idade: '0-0-0 0:0:0',
+      idade: '0000-00-00T00:00',
     }
   const addCatequizando = () => {
     Axios.post(catequizandos, valFormulario )
