@@ -1,23 +1,78 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import turma from "./api/api";
+import bdCatequese from "./api/api";
 import Header from "./PaginadoAdm/components/Header";
-
+import './Catequizando.css';
+import { GrEdit } from "react-icons/gr";
+import { Form } from "react-bootstrap";
+import axios from "axios";
 
 class Catequizando extends Component {
   state = {
     catequizandos: [],
+    editando: false,
+    idEditando: 0,
+    cpf: false,
+    nome: "",
+    rg: false,
+    comprovanteResidencia: false,
+    casado: false,
+    dataNasc: '2000-01-01T00:00:00.000Z',
   };
 
   async componentDidMount() {
-    const response = await turma.get("/readall/pessoa");
+    const response = await bdCatequese.get("/readall/pessoa");
 
     console.log(response.data);
 
     this.setState({ catequizandos: response.data });
   }
 
+  editar = (cateq) => {
+    console.log(cateq.id);
+    this.setState({
+      editando: !this.state.editando,
+      idEditando: cateq.id,
+      cpf: cateq.id.cpf,
+      nome: cateq.id.nome,
+      rg: cateq.id.rg,
+      comprovanteResidencia: cateq.id.comprovanteResidencia,
+      casado: cateq.id.casado,
+      dataNasc: cateq.id.dataNasc,
+
+    })
+    let el = document.querySelector('#li' + cateq.id);
+    let btnSalvar = el.querySelector('#btnSalvar');
+    btnSalvar.style.visibility == 'visible' ? btnSalvar.style.visibility = 'hidden' : btnSalvar.style.visibility = 'visible ';
+  }
+
+  salvar = (cateq) => {
+    this.setState({
+      editando: false,
+    });
+    bdCatequese.patch("/update/pessoa/" + cateq.id, {
+      cpf: cateq.id.cpf,
+      nome: cateq.id.nome,
+      rg: cateq.id.rg,
+      comprovanteResidencia: cateq.id.comprovanteResidencia,
+      casado: cateq.id.casado,
+      dataNasc: cateq.id.dataNasc,
+    })
+    let el = document.querySelector('#li' + cateq.id);
+    let btnSalvar = el.querySelector('#btnSalvar');
+    btnSalvar.style.visibility = 'hidden';
+  }
+
+  handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value
+    }, () => console.log(this.state));
+  }
   render() {
     const { catequizandos } = this.state;
 
@@ -31,27 +86,89 @@ class Catequizando extends Component {
             <h2>Catequizandos</h2>
             <ul>
               {catequizandos.map((catequizando) => (
-                <li key={catequizando.id}>
-                  <h3>
-                    Nome:
-                    {catequizando.nome}
-                  </h3>
-                  <p></p>
-                  <h3>
-                    CPF:
-                    {catequizando.cpf}
-                  </h3>
-                  <p></p>
-                  <h3>
-                    RG:
-                    {catequizando.rg}
-                  </h3>
-                  <p></p>
-                  <h3>
-                    Data de Nascimento:
-                    {new Date(catequizando.dataNasc).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}
-                  </h3>
-                  <p></p>
+                <li id={'li' + catequizando.id}>
+                  <div className="linha">
+                    <p>Nome </p>
+                    {
+                      this.state.editando && this.state.idEditando == catequizando.id
+                        ? <Form.Control
+                          id="nome"
+                          className="nomeForm"
+                          name="nome"
+                          type="text"
+                          defaultValue={catequizando.nome}
+                          onChange={this.handleChange}
+                        />
+                        : <p>{catequizando.nome}</p>
+
+                    }
+                    <GrEdit className="btnEditar" onClick={() => this.editar(catequizando)}></GrEdit>
+                  </div>
+
+                  <div className="linha">
+                    <p>CPF </p>
+                    <p>{
+                      this.state.editando && this.state.idEditando == catequizando.id
+                        ? <Form.Check
+                          type="checkbox"
+                          name="cpf"
+                          defaultChecked={catequizando.cpf}
+                          onChange={this.handleChange}
+                        />
+                        : catequizando.cpf ? 'SIM' : 'NÃO'
+                    }</p>
+                    <button id="btnSalvar" className="btnSalvar" onClick={() => this.salvar(catequizando)}>Salvar</button>
+                  </div>
+
+                  <div className="linha">
+                    <p>RG </p>
+                    <p>{
+                      this.state.editando && this.state.idEditando == catequizando.id
+                        ? <Form.Check
+                          type="checkbox"
+                          name="rg"
+                          defaultChecked={catequizando.rg}
+                          onChange={this.handleChange}
+                        />
+                        : catequizando.rg ? 'SIM' : 'NÃO'
+                    }</p>
+                  </div>
+
+                  <div className="linha">
+                    <p>Casado </p>
+                    <p>{
+                      this.state.editando && this.state.idEditando == catequizando.id
+                        ? <Form.Check
+                          type="checkbox"
+                          name="casado"
+                          defaultChecked={catequizando.casado}
+                          onChange={this.handleChange}
+                        />
+                        : catequizando.casado ? 'SIM' : 'NÃO'
+                    }</p>
+                  </div>
+
+                  <div className="linha">
+                    <p>Comprovante de Residencia </p>
+                    <p>{
+                      this.state.editando && this.state.idEditando == catequizando.id
+                        ? <Form.Check
+                          type="checkbox"
+                          name="comprovanteResidencia"
+                          defaultChecked={catequizando.comprovanteResidencia}
+                          onChange={this.handleChange}
+                        />
+                        : catequizando.comprovanteResidencia ? 'SIM' : 'NÃO'
+                    }</p>
+                  </div>
+
+                  <div className="linha">
+                    <p>Data de Nascimento </p>
+                    <p>{
+                      new Date(catequizando.dataNasc).toLocaleDateString('pt-BR', { timeZone: 'UTC' })
+                    }</p>
+                  </div>
+                  <hr></hr>
                 </li>
               ))}
             </ul>
