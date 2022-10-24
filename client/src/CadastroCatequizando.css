@@ -22,7 +22,7 @@
 }
 
 .column.middle {
-  background-color: aliceblue;
+  background-color: #f0f8ff;
   -webkit-flex: 2;
   -ms-flex: 2;
   flex: 2;
@@ -59,6 +59,36 @@ Container {
 .btnCadastrar {
   display: flex;
   justify-content: center;
+  margin: 25px;
+}
+
+.modalPadrinhos{
+  display: flex;
+  background-color: #96A5B3;
+  width: 50vw;
+  height: 88vh;
+  position:absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display:none;
+  animation: animate;
+  animation-duration: 800ms;
+  box-shadow: 0 0 3px;
+  border-radius: 5px;
+
+}
+@keyframes animate {
+  from{opacity: 1;}
+  from{opacity: 0;}
+}
+
+svg{
+  color: white;
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin: 8px;
 }
 
 ul.navBar {
@@ -82,4 +112,25 @@ ul.navBar {
   display: inline-block;
   max-height: min-content;
   column-count: 3;
+}
+
+/*@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,500&display=swap');*/
+h3{
+  
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #211703;
+}
+
+.nomePadrinho, .nomeMadrinha{
+  display: flex;
+  text-align: center;
+  align-items: baseline;
+  padding: 0 10px;
+}
+
+#buttonCadastrarPadrinhos{
+  margin: 0 auto;
+  display: inherit;
 }
