@@ -1,276 +1,324 @@
 import React from "react";
 import { Form, Button, Container } from "react-bootstrap";
+import { FaRegWindowClose } from "react-icons/fa";
 import { useState } from "react";
 //import { useHistory } from "react-router-dom";
 import "./CadastroCatequizando.css";
 import "./App.css";
-import Navbar from "./Navbar";
 import Header from "./PaginadoAdm/components/Header";
 import catequese from "./api/api";
-
-import Axios from "axios";
+import axios from "axios";
 
 const initialValueCat = {
-  cpf: 0,
+  cpf: false,
   nome: "",
   rg: false,
   comprovanteResidencia: false,
   casado: false,
-  idade: 0,
+  dataNasc: "2000-01-01T00:00:00.000Z",
 };
-const CadastroCatequizando = () => {
-  const [values, setValues] = useState(initialValueCat);
-  //let history = useHistory();
-  
-  const [name, setName] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [rg, setRg] = useState(false);
-  const [compResidencia, setCompResidencia] = useState(false);
-  const [casado, setCasado] = useState(false);
-  const [idade, setIdade] = useState("");
-  const [catequizandosList, setCatequizandosList] = useState([]);
 
+function modalPadrinho() {
+  let modal = document.querySelector(".modalPadrinhos");
 
-  const catequizandos = "http://localhost:4003/create/pessoa";
-  /*
-  const addCatequizando = () => {
-    Axios.post(catequizandos, {
-      cpf: 0,
-      nome: "",
-      rg: false,
-      comprovanteResidencia: false,
-      casado: false,
-      idade: 0,
-    })
-      .then((response) => {
-        console.log("sucess");
-        alert("Catequizando cadastrado com sucesso!");
-        //history.push("/paginaadm");
-      })
-      .catch((error) => console.log(error));
-  };
-  */ 
- const valFormulario = {
+  modal.style.display = "block";
+}
+
+function fecharModal() {
+  let modal = document.querySelector(".modalPadrinhos");
+
+  modal.style.display = "none";
+}
+
+const dias = [...Array(32).keys()].splice(1);
+const meses = [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro",
+];
+const anoAtual = 2022;
+const anos = Array(anoAtual - (anoAtual - 100))
+  .fill("")
+  .map((value, index) => anoAtual - index);
+
+const catequizandos = "http://localhost:4003/create/pessoa";
+
+class CadastroCatequizando extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       cpf: false,
       nome: "",
       rg: false,
       comprovanteResidencia: false,
       casado: false,
-      idade: '0000-00-00T00:00',
-    }
-  const addCatequizando = () => {
-    Axios.post(catequizandos, valFormulario )
-      .then((response) => {
-        console.log("sucess");
-        alert("Catequizando cadastrado com sucesso!");
-        //history.push("/paginaadm");
-      })
-      .catch((error) => console.log(error));
+      dataNasc: "2000-01-01T00:00:00.000Z",
+      dia: "1",
+      mes: "1",
+      ano: "2000",
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.addCatequizando = this.addCatequizando.bind(this);
+    this.converterData = this.converterData.bind(this);
+  }
+
+  handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => console.log(this.state)
+    );
   };
-  function setNome() {
-    valFormulario.nome = values.nome;
-  }
-  function alteraCpf() {
-    if(values.cpf != 0)
-    valFormulario.cpf = true;
-    else
-    valFormulario.cpf = false;
-  }
-  function alteraData() {
-    valFormulario.idade = values.idade+" 0:0:0"
-  }
-  function temComprovante() {
-    if(values.comprovanteResidencia != false )
-    valFormulario.cpf = true;
-    else
-    valFormulario.cpf = false;
-  }
 
-  addCatequizando();
+  addCatequizando = () => {
+    var state = this.state;
+    var dataConvertida = this.converterData(state.dia, state.mes, state.ano);
+    this.setState(
+      {
+        dataNasc: dataConvertida,
+      },
+      () => {
+        axios
+          .post(catequizandos, {
+            nome: this.state.nome,
+            cpf: this.state.cpf,
+            rg: this.state.rg,
+            comprovanteResidencia: this.state.comprovanteResidencia,
+            casado: this.state.casado,
+            dataNasc: this.state.dataNasc,
+          })
+          .then((response) => {
+            console.log("sucess");
+            alert("Catequizando cadastrado com sucesso!");
+            //history.push("/paginaadm");
+          })
+          .catch((error) => console.log(error));
+      }
+    );
+  };
+  converterData = (d, m, a) => {
+    if (m.length < 2) {
+      m = "0" + m;
+    }
+    if (d.length < 2) {
+      d = "0" + d;
+    }
+    var data = a + "-" + m + "-" + d + "T01:00:00.000Z";
+    console.log(data);
+    return data;
+  };
 
-  function onChange(ev) {
-    const { name, value } = ev.target;
+  render() {
+    return (
+      <div className="cadastrar">
+        <Header />
+        <h1 className="mainTitle">Paróquia São João Bosco</h1>
+        <div className="row">
+          <div className="column side"></div>
+          <div className="column middle">
+            <h2>Cadastro do Catequizando</h2>
+            <Form>
+              <Form.Group className="mb-3">
+                <Form.Label htmlFor="nome">Nome Completo: </Form.Label>
+                <Form.Control
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
 
-    console.log({ name, values });
-  }
-/*
-  return (
-    <div className="cadastrar">
-      <h1 className="mainTitle">Paróquia São João Bosco</h1>
-      <div className="row">
-        <div className="column side"></div>
-        <div className="column middle">
-          <Navbar></Navbar>
-          <h2>Cadastro do Catequizando</h2>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="nome">Nome Completo: </Form.Label>
-              <Form.Control
-                id="nome"
-                name="nome"
-                type="text"
-                onChange={onChange}
-              />
-            </Form.Group>
+              <p></p>
 
-            <p></p>
+              <div className="row">
+                <Form.Group
+                  className="custom-control custom-checkbox"
+                  controlId="requisitos"
+                >
+                  <p>
+                    <b>Documentos Apresentados</b>
+                  </p>
+                  <Form.Check
+                    type="checkbox"
+                    name="cpf"
+                    label="CPF"
+                    onChange={this.handleChange}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    name="rg"
+                    label="RG"
+                    onChange={this.handleChange}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    name="comprovanteResidencia"
+                    label="Comprovante de Residência:"
+                    onChange={this.handleChange}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    name="casado"
+                    label="Casado"
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="cpf">CPF: </Form.Label>
-              <Form.Control
-                id="cpf"
-                name="cpf"
-                type="text"
-                onChange={onChange}
-              />
-            </Form.Group>
+                <p>
+                  <b>Data de Nascimento</b>
+                </p>
 
-            <div className="row">
-              <Form.Group
-                className="custom-control custom-checkbox"
-                controlId="requisitos"
-              >
+                <Form.Group className="dataNasc">
+                  <Form.Select
+                    aria-label="Dia"
+                    name="dia"
+                    onChange={this.handleChange}
+                  >
+                    <option>Dia</option>
+                    {dias.map((option) => (
+                      <option key={option.toString()} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </Form.Select>
+
+                  <Form.Select
+                    aria-label="Mes"
+                    name="mes"
+                    onChange={this.handleChange}
+                  >
+                    <option>Mes</option>
+                    {meses.map((option, index) => (
+                      <option key={option.toString()} value={index + 1}>
+                        {option}
+                      </option>
+                    ))}
+                  </Form.Select>
+
+                  <Form.Select
+                    aria-label="Ano"
+                    name="ano"
+                    onChange={this.handleChange}
+                  >
+                    <option>Ano</option>
+                    {anos.map((option) => (
+                      <option key={option.toString()} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </div>
+
+              <div className="btnCadastrar">
+                <Button variant="primary" onClick={modalPadrinho}>
+                  Padrinhos
+                </Button>
+              </div>
+
+              <div className="btnCadastrar">
+                <Button variant="success" onClick={this.addCatequizando}>
+                  Cadastrar Catequizando
+                </Button>
+              </div>
+            </Form>
+
+            <div className="modalPadrinhos">
+              <FaRegWindowClose onClick={fecharModal}></FaRegWindowClose>
+              <Form>
+                <h3>Cadastro de Padrinhos</h3>
+                <p>
+                  <b>Padrinho</b>
+                </p>
+                <Form.Group className="nomePadrinho">
+                  <Form.Label>Nome:</Form.Label>
+                  <Form.Control
+                    id="nomePadrinho"
+                    name="nomePadrinho"
+                    type="text"
+                  />
+                </Form.Group>
                 <p>
                   <b>Documentos Apresentados</b>
                 </p>
-                <Form.Check type="checkbox" label="RG" />
-                <Form.Check
-                  type="checkbox"
-                  label="Comprovante de Residência:"
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Crisma"
-                  onChange={onChange}
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Batismo"
-                  onChange={onChange}
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Eucaristia"
-                  onChange={onChange}
-                />
-              </Form.Group>
-            </div>
-            <div className="btnCadastrar">
-              <Button variant="primary" type="submit" onClick={addCatequizando}>
-                Cadastrar
-              </Button>
-            </div>
-          </Form>
-        </div>
-        <div className="column side"></div>
-      </div>
-
-      <footer>
-        <p>Desenvolvido pelo Grupo 2 - Construção de Software - 2022</p>
-      </footer>
-    </div>
-  );
-};
-*/
-  return (
-    <div className="cadastrar">
-      <h1 className="mainTitle">Paróquia São João Bosco</h1>
-      <div className="row">
-        <div className="column side"></div>
-        <div className="column middle">
-          <Navbar id='navbar'></Navbar>
-          <h2>Cadastro do Catequizando</h2>
-          <a href="/cadastrarTurma">Cadastrar Turma?</a>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="nome">Nome Completo: </Form.Label>
-              <Form.Control
-                id="nome"
-                name="nome"
-                type="text"
-                onChange={setNome}
-              />
-            </Form.Group>
-
-            <p></p>
-
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="cpf">CPF: </Form.Label>
-              <Form.Control
-                id="cpf"
-                name="cpf"
-                type="text"
-                onChange={alteraCpf}
-              />
-            </Form.Group>
-
-            <p></p>
-
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="idade">Data de Nascimento: 'Formato aaaa-mm-dd' </Form.Label>
-              <Form.Control
-                id="idade"
-                name="idade"
-                type="datetime-local"
-                onChange={alteraData}
-              />
-            </Form.Group>
-
-            <div className="row">
-              <Form.Group
-                className="custom-control custom-checkbox"
-                controlId="requisitos"
-              >
+                <Form.Group
+                  className="custom-control custom-checkbox"
+                  controlId="requisitosPadrinho"
+                >
+                  <Form.Check type="checkbox" name="batismoP" label="Batismo" />
+                  <Form.Check
+                    type="checkbox"
+                    name="primeiraEucaristiaP"
+                    label="Primeira Eucaristia"
+                  />
+                  <Form.Check type="checkbox" name="crismaP" label="Crisma" />
+                  <Form.Check
+                    type="checkbox"
+                    name="casamentoP"
+                    label="Casado"
+                  />
+                </Form.Group>
+                <p>
+                  <b>Madrinha</b>
+                </p>
+                <Form.Group className="nomeMadrinha">
+                  <Form.Label>Nome:</Form.Label>
+                  <Form.Control
+                    id="nomeMadrinha"
+                    name="nomeMadrinha"
+                    type="text"
+                  />
+                </Form.Group>
                 <p>
                   <b>Documentos Apresentados</b>
                 </p>
-                <Form.Check type="checkbox" label="RG" />
-                <Form.Check
-                  type="checkbox"
-                  label="Comprovante de Residência:"
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Crisma"
-                  onChange={onChange}
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Batismo"
-                  onChange={onChange}
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Eucaristia"
-                  onChange={onChange}
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Casado"
-                  onChange={onChange}
-                />
-                <Form.Check
-                  type="checkbox"
-                  label="Comprovante de Residência"
-                  onChange={temComprovante}
-                />
-              </Form.Group>
+                <Form.Group
+                  className="custom-control custom-checkbox"
+                  controlId="requisitosMadrinha"
+                >
+                  <Form.Check type="checkbox" name="batismoM" label="Batismo" />
+                  <Form.Check
+                    type="checkbox"
+                    name="primeiraEucaristiaP"
+                    label="Primeira Eucaristia"
+                  />
+                  <Form.Check type="checkbox" name="crismaM" label="Crisma" />
+                  <Form.Check
+                    type="checkbox"
+                    name="casamentoM"
+                    label="Casado"
+                  />
+                </Form.Group>
+                <Button variant="light" id="buttonCadastrarPadrinhos">
+                  Cadastrar
+                </Button>
+              </Form>
             </div>
-            <div className="btnCadastrar">
-              <Button variant="primary" type="submit" onClick={addCatequizando}>
-                Cadastrar
-              </Button>
-            </div>
-          </Form>
+          </div>
+          <div className="column side"></div>
         </div>
-        <div className="column side"></div>
+
+        <footer>
+          <p>Desenvolvido pelo Grupo 2 - Construção de Software - 2022</p>
+        </footer>
       </div>
-
-      <footer>
-        <p>Desenvolvido pelo Grupo 2 - Construção de Software - 2022</p>
-      </footer>
-    </div>
-  );
-};
-
+    );
+  }
+}
 export default CadastroCatequizando;
