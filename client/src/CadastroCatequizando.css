@@ -66,7 +66,8 @@ Container {
   display: flex;
   background-color: #96A5B3;
   width: 50vw;
-  height: 88vh;
+  height: 70vh;
+  padding: 10px;
   position:absolute;
   top:50%;
   left: 50%;
@@ -76,6 +77,7 @@ Container {
   animation-duration: 800ms;
   box-shadow: 0 0 3px;
   border-radius: 5px;
+  font-size: 0.9em;
 
 }
 @keyframes animate {
@@ -133,4 +135,12 @@ h3{
 #buttonCadastrarPadrinhos{
   margin: 0 auto;
   display: inherit;
+}
+
+Table{
+  margin: 1rem 0;
+}
+.InstrucoesPadrinhos{
+  font-size: 2.5ch;
+  font-weight: bold;
 }

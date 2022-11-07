@@ -1,6 +1,7 @@
 import React from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, InputGroup } from "react-bootstrap";
 import { FaRegWindowClose } from "react-icons/fa";
+import { AiOutlineCheck } from "react-icons/ai";
 import { useState } from "react";
 //import { useHistory } from "react-router-dom";
 import "./CadastroCatequizando.css";
@@ -18,14 +19,35 @@ const initialValueCat = {
   dataNasc: "2000-01-01T00:00:00.000Z",
 };
 
-function modalPadrinho() {
-  let modal = document.querySelector(".modalPadrinhos");
+function modalPadrinhoParte1() {
+  let modal = document.querySelector(".modalPadrinhos.parte1");
+
+  modal.style.display = "block";
+}
+function modalPadrinhoParte2() {
+  let modal = document.querySelector(".modalPadrinhos.parte2");
+
+  modal.style.display = "block";
+}
+function modalPadrinhoParte3() {
+  let modal = document.querySelector(".modalPadrinhos.parte3");
 
   modal.style.display = "block";
 }
 
-function fecharModal() {
-  let modal = document.querySelector(".modalPadrinhos");
+function fecharModalPadrinhos1() {
+  let modal = document.querySelector(".modalPadrinhos.parte1");
+
+  modal.style.display = "none";
+}
+function fecharModalPadrinhos2() {
+  let modal = document.querySelector(".modalPadrinhos.parte2");
+
+  modal.style.display = "none";
+}
+
+function fecharModalPadrinhos3() {
+  let modal = document.querySelector(".modalPadrinhos.parte3");
 
   modal.style.display = "none";
 }
@@ -89,6 +111,53 @@ class CadastroCatequizando extends React.Component {
   addCatequizando = () => {
     var state = this.state;
     var dataConvertida = this.converterData(state.dia, state.mes, state.ano);
+    var nome = this.validaNome(state.nome);
+
+    //Mensagens de Alerta exibidas quando há algum documento faltando
+    if (
+      state.cpf == false &&
+      state.rg == true &&
+      state.comprovanteResidencia == true
+    ) {
+      alert("CPF não foi apresentado!");
+    } else if (
+      state.cpf == true &&
+      state.rg == false &&
+      state.comprovanteResidencia == true
+    ) {
+      alert("RG não foi apresentado!");
+    } else if (
+      state.cpf == true &&
+      state.rg == true &&
+      state.comprovanteResidencia == false
+    ) {
+      alert("Comprovante de Residência não foi apresentado!");
+    } else if (
+      state.cpf == false &&
+      state.rg == false &&
+      state.comprovanteResidencia == true
+    ) {
+      alert("CPF e RG não foram apresentados!");
+    } else if (
+      state.cpf == true &&
+      state.rg == false &&
+      state.comprovanteResidencia == false
+    ) {
+      alert("RG e Comprovante de Residência não foram apresentados!");
+    } else if (
+      state.cpf == false &&
+      state.rg == true &&
+      state.comprovanteResidencia == true
+    ) {
+      alert("CPF e Comprovante de Residência não foram apresentados!");
+    } else if (
+      state.cpf == false &&
+      state.rg == false &&
+      state.comprovanteResidencia == false
+    ) {
+      alert("CPF, RG e Comprovante de Residência não foram apresentados!");
+    }
+
     this.setState(
       {
         dataNasc: dataConvertida,
@@ -106,6 +175,7 @@ class CadastroCatequizando extends React.Component {
           .then((response) => {
             console.log("sucess");
             alert("Catequizando cadastrado com sucesso!");
+            window.location.reload(false);
             //history.push("/paginaadm");
           })
           .catch((error) => console.log(error));
@@ -124,6 +194,32 @@ class CadastroCatequizando extends React.Component {
     return data;
   };
 
+  validaNome = (nome) => {
+    var element = document.getElementById("alertaPreenchimento");
+    var nomeElement = document.getElementById("nome");
+
+    if (nome == "") {
+      element.classList.remove("d-none");
+      nomeElement.classList.add("is-invalid");
+    } else {
+      console.log("Nome OK!");
+      element.classList.add("d-none");
+      nomeElement.classList.remove("is-invalid");
+    }
+  };
+
+  cadastroPadrinho() {
+    //Se a modal estiver aberta, cadastre uma pessoa e feche a modal
+    console.log("Cadastro de padrinhos");
+    fecharModalPadrinhos1();
+    modalPadrinhoParte2();
+  }
+  cadastroSacramentosPadrinho() {
+    console.log("Cadastro Sacramentos Padrinho");
+    fecharModalPadrinhos2();
+    modalPadrinhoParte3();
+  }
+
   render() {
     return (
       <div className="cadastrar">
@@ -141,7 +237,12 @@ class CadastroCatequizando extends React.Component {
                   name="nome"
                   type="text"
                   onChange={this.handleChange}
+                  required
                 />
+
+                <Form.Control.Feedback type="invalid">
+                  Por favor, preencha o nome!
+                </Form.Control.Feedback>
               </Form.Group>
 
               <p></p>
@@ -169,7 +270,7 @@ class CadastroCatequizando extends React.Component {
                   <Form.Check
                     type="checkbox"
                     name="comprovanteResidencia"
-                    label="Comprovante de Residência:"
+                    label="Comprovante de Residência"
                     onChange={this.handleChange}
                   />
                   <Form.Check
@@ -226,8 +327,14 @@ class CadastroCatequizando extends React.Component {
                 </Form.Group>
               </div>
 
+              <div
+                className="alert alert-danger d-none"
+                id="alertaPreenchimento"
+              >
+                Preencha os campos obrigatórios!
+              </div>
               <div className="btnCadastrar">
-                <Button variant="primary" onClick={modalPadrinho}>
+                <Button variant="primary" onClick={modalPadrinhoParte1}>
                   Padrinhos
                 </Button>
               </div>
@@ -239,20 +346,28 @@ class CadastroCatequizando extends React.Component {
               </div>
             </Form>
 
-            <div className="modalPadrinhos">
-              <FaRegWindowClose onClick={fecharModal}></FaRegWindowClose>
+            <div className="modalPadrinhos parte1">
+              <FaRegWindowClose
+                className="botãoFecharModalPt1"
+                onClick={fecharModalPadrinhos1}
+              ></FaRegWindowClose>
               <Form>
                 <h3>Cadastro de Padrinhos</h3>
+                <p></p>
+                <div className="InstrucoesPadrinhos">
+                  Primeiro, vamos cadastrar o padrinho!
+                </div>
+                <p></p>
                 <p>
                   <b>Padrinho</b>
                 </p>
                 <Form.Group className="nomePadrinho">
                   <Form.Label>Nome:</Form.Label>
-                  <Form.Control
-                    id="nomePadrinho"
-                    name="nomePadrinho"
-                    type="text"
-                  />
+
+                  <Form.Control id="nome" name="nome" type="text" required />
+                  <Form.Control.Feedback type="invalid">
+                    Por favor, preencha o nome!
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <p>
                   <b>Documentos Apresentados</b>
@@ -260,55 +375,140 @@ class CadastroCatequizando extends React.Component {
                 <Form.Group
                   className="custom-control custom-checkbox"
                   controlId="requisitosPadrinho"
-                >
-                  <Form.Check type="checkbox" name="batismoP" label="Batismo" />
-                  <Form.Check
-                    type="checkbox"
-                    name="primeiraEucaristiaP"
-                    label="Primeira Eucaristia"
-                  />
-                  <Form.Check type="checkbox" name="crismaP" label="Crisma" />
-                  <Form.Check
-                    type="checkbox"
-                    name="casamentoP"
-                    label="Casado"
-                  />
+                ></Form.Group>
+                <Form.Check
+                  type="checkbox"
+                  name="cpf"
+                  label="CPF"
+                  onChange={this.handleChange}
+                />
+                <Form.Check
+                  type="checkbox"
+                  name="rg"
+                  label="RG"
+                  onChange={this.handleChange}
+                />
+                <Form.Check
+                  type="checkbox"
+                  name="comprovanteResidencia"
+                  label="Comprovante de Residência"
+                  onChange={this.handleChange}
+                />{" "}
+                <Form.Check
+                  type="checkbox"
+                  name="casado"
+                  label="Casado"
+                  onChange={this.handleChange}
+                />
+                <b>Data de Nascimento</b>
+                <Form.Group className="dataNasc">
+                  <Form.Select
+                    aria-label="Dia"
+                    name="dia"
+                    onChange={this.handleChange}
+                  >
+                    <option>Dia</option>
+                    {dias.map((option) => (
+                      <option key={option.toString()} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </Form.Select>
+
+                  <Form.Select
+                    aria-label="Mes"
+                    name="mes"
+                    onChange={this.handleChange}
+                  >
+                    <option>Mes</option>
+                    {meses.map((option, index) => (
+                      <option key={option.toString()} value={index + 1}>
+                        {option}
+                      </option>
+                    ))}
+                  </Form.Select>
+
+                  <Form.Select
+                    aria-label="Ano"
+                    name="ano"
+                    onChange={this.handleChange}
+                  >
+                    <option>Ano</option>
+                    {anos.map((option) => (
+                      <option key={option.toString()} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </Form.Select>
                 </Form.Group>
-                <p>
-                  <b>Madrinha</b>
-                </p>
-                <Form.Group className="nomeMadrinha">
-                  <Form.Label>Nome:</Form.Label>
-                  <Form.Control
-                    id="nomeMadrinha"
-                    name="nomeMadrinha"
-                    type="text"
-                  />
-                </Form.Group>
-                <p>
-                  <b>Documentos Apresentados</b>
-                </p>
+                <div className="btnCadastrar">
+                  <Button
+                    variant="success"
+                    id="buttonCadastrarPadrinho"
+                    onClick={this.cadastroPadrinho}
+                  >
+                    Próximo
+                  </Button>
+                </div>
+              </Form>
+            </div>
+
+            <div className="modalPadrinhos parte2">
+              <FaRegWindowClose
+                className="botãoFecharModalPt2"
+                onClick={fecharModalPadrinhos2}
+              ></FaRegWindowClose>
+              <Form>
+                <h3>Cadastro de Padrinhos</h3>
+                <p></p>
+                <div className="InstrucoesPadrinhos">
+                  {" "}
+                  Quais os documentos de sacramento ele apresentou?
+                </div>
+                <p></p>
                 <Form.Group
                   className="custom-control custom-checkbox"
-                  controlId="requisitosMadrinha"
-                >
-                  <Form.Check type="checkbox" name="batismoM" label="Batismo" />
-                  <Form.Check
-                    type="checkbox"
-                    name="primeiraEucaristiaP"
-                    label="Primeira Eucaristia"
-                  />
-                  <Form.Check type="checkbox" name="crismaM" label="Crisma" />
-                  <Form.Check
-                    type="checkbox"
-                    name="casamentoM"
-                    label="Casado"
-                  />
-                </Form.Group>
-                <Button variant="light" id="buttonCadastrarPadrinhos">
-                  Cadastrar
-                </Button>
+                  controlId="requisitosPadrinho"
+                ></Form.Group>
+                <Form.Check
+                  type="checkbox"
+                  name="comprovanteBatismoAdmissao"
+                  label="Batismo"
+                  onChange={this.handleChange}
+                />
+                <Form.Check
+                  type="checkbox"
+                  name="comprovantePrimeiraEucaristia"
+                  label="Primeira Eucaristia"
+                  onChange={this.handleChange}
+                />
+                <Form.Check
+                  type="checkbox"
+                  name="comprovanteCrisma"
+                  label="Crisma"
+                  onChange={this.handleChange}
+                />{" "}
+                <div className="btnCadastrar">
+                  <Button
+                    id="btnCadastrarSacramentosPadrinho"
+                    onClick={this.cadastroSacramentosPadrinho}
+                    variant="success"
+                  >
+                    Próximo
+                  </Button>
+                </div>
               </Form>
+            </div>
+
+            <div className="modalPadrinhos parte3">
+              <FaRegWindowClose
+                className="botãoFecharModalPt3"
+                onClick={fecharModalPadrinhos3}
+              ></FaRegWindowClose>
+              <p></p>
+              <AiOutlineCheck style={{ color: "black" }}></AiOutlineCheck>
+              <p></p>
+              <b>Padrinho Cadastrado com Sucesso!</b>
             </div>
           </div>
           <div className="column side"></div>
