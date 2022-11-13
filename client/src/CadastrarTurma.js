@@ -28,10 +28,10 @@ function CadastrarTurma() {
   };
   const turma = "http://localhost:4003/create/turma";
   const readTurma = "http://localhost:4003/readall/turma";
-  const delTurma ="http://localhost:4003/delete/turma/";
+  const delTurma = "http://localhost:4003/delete/turma/";
   const addTurma = () => {
     Axios.post(turma, {
-      dataInicio: "2000-01-01T00:00:00.000Z" ,
+      dataInicio: "2000-01-01T00:00:00.000Z",
       dataFim: "2000-01-01T00:00:00.000Z",
     })
       .then((response) => {
@@ -41,9 +41,9 @@ function CadastrarTurma() {
       })
       .catch((error) => console.log(error));
   };
-    const deleteTurma = () => {
+  const deleteTurma = () => {
     Axios.post(delTurma, {
-      dataInicio: "2000-01-01T00:00:00.000Z" ,
+      dataInicio: "2000-01-01T00:00:00.000Z",
       dataFim: "2000-01-01T00:00:00.000Z",
     })
       .then((response) => {
@@ -110,13 +110,15 @@ function CadastrarTurma() {
         </div>
         <div className="column side"></div>
       </div>
-      <div>{Object.values(formValues).map(turmas => (
-        <tr key={turmas.idTurma}>
-          <td>{turmas.idTurma}</td>
-          <td>{turmas.dataInicio}</td>
-          <td>{turmas.dataFim}</td>
-        </tr>
-      ))}</div>
+      <div>
+        {Object.values(formValues).map((turmas) => (
+          <tr key={turmas.idTurma}>
+            <td>{turmas.idTurma}</td>
+            <td>{turmas.dataInicio}</td>
+            <td>{turmas.dataFim}</td>
+          </tr>
+        ))}
+      </div>
       <footer>
         <p>Desenvolvido pelo Grupo 2 - Construção de Software - 2022</p>
       </footer>

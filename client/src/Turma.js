@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./PaginadoAdm/components/Header";
 import catequese from "./api/api";
+import "./Turma.css";
+import { Table } from "react-bootstrap";
 
+const formatter = Intl.DateTimeFormat("pt-BR", {
+  dateStyle: "short",
+});
 class Turma extends Component {
   state = {
     turmas: [],
@@ -22,30 +27,50 @@ class Turma extends Component {
     return (
       <div className="turmas">
         <Header />
+        <h1 className="mainTitle">Paróquia São João Bosco</h1>
         <div className="row">
           <div className="column side"></div>
           <div className="column middle">
             <h2>Turmas</h2>
-            <ul>
-              {turmas.map((turma) => (
-                <li key={turma.idTurma}>
-                  <h3>
-                    Turma:
-                    {turma.idTurma}
-                  </h3>
-                  <h3>
-                    Data Inicial:
-                    {turma.dataInicio}
-                  </h3>
-                  <p></p>
-                  <h3>
-                    Data Inicial:
-                    {turma.dataFim}
-                  </h3>
-                  <p></p>
-                </li>
-              ))}
-            </ul>
+            <Table striped bordered hover="md">
+              <thead>
+                <tr>
+                  <th>Número</th>
+                  <th>Data Inicial</th>
+                  <th>Data Final</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    {turmas.map((turma) => (
+                      <p key={turma.idTurma}>{turma.idTurma}</p>
+                    ))}
+                  </td>
+                  <td>
+                    {turmas.map((turma) => (
+                      <p>
+                        {new Date(turma.dataInicio).toLocaleDateString(
+                          "pt-BR",
+                          {
+                            timeZone: "UTC",
+                          }
+                        )}
+                      </p>
+                    ))}
+                  </td>
+                  <td>
+                    {turmas.map((turma) => (
+                      <p>
+                        {new Date(turma.dataFim).toLocaleDateString("pt-BR", {
+                          timeZone: "UTC",
+                        })}
+                      </p>
+                    ))}
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
           </div>
           <div className="column side"></div>
         </div>

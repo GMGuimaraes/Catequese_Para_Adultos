@@ -7,7 +7,9 @@ import "./Catequizando.css";
 import { GrEdit } from "react-icons/gr";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Form } from "react-bootstrap";
-import axios from "axios";
+import axios, { Axios } from "axios";
+
+const deleteCatequizando = "http://localhost:4003/delete/user/";
 
 class Catequizando extends Component {
   state = {
@@ -66,11 +68,23 @@ class Catequizando extends Component {
     btnSalvar.style.visibility = "hidden";
   };
 
-  excluir = (cateq) => {
-    axios.delete("/delete/user/" + cateq.id).then((response) => {
-      console.log("Deletado!");
-      alert("Catequizando Deletado!");
-    });
+  excluir = (id) => {
+    console.log(id);
+    this.setState(
+      {
+        excluindo: false,
+      },
+      () => {
+        bdCatequese
+          .delete("/delete/user/" + id, {})
+          .then((response) => {
+            console.log("Deletado!");
+            alert("Catequizando Deletado!");
+            window.location.reload(false);
+          })
+          .catch((error) => console.log(error));
+      }
+    );
   };
 
   handleChange = (event) => {
@@ -122,7 +136,7 @@ class Catequizando extends Component {
                       className="btnDeletar"
                       style={{ color: "black" }}
                       //onChange={this.handleChange}
-                      onClick={() => this.excluir(catequizando)}
+                      onClick={() => this.excluir(catequizando.id)}
                     ></AiOutlineDelete>
                   </div>
 

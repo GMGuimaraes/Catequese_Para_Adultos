@@ -1,0 +1,10 @@
+.turmas {
+    min-height: 100vh;
+    position: relative;
+    background-color: #d6ffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+thead {
+    font-weight: bold;
+}
