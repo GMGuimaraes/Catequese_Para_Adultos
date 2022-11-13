@@ -231,7 +231,9 @@ class CadastroCatequizando extends React.Component {
             <h2>Cadastro do Catequizando</h2>
             <Form>
               <Form.Group className="mb-3">
-                <Form.Label htmlFor="nome">Nome Completo: </Form.Label>
+                <Form.Label htmlFor="nome">
+                  <b>Nome Completo: </b>
+                </Form.Label>
                 <Form.Control
                   id="nome"
                   name="nome"
@@ -249,11 +251,11 @@ class CadastroCatequizando extends React.Component {
 
               <div className="row">
                 <Form.Group
-                  className="custom-control custom-checkbox"
+                  className="custom-control custom-checkbox mb-3"
                   controlId="requisitos"
                 >
                   <p>
-                    <b>Documentos Apresentados</b>
+                    <b>Documentos Apresentados:</b>
                   </p>
                   <Form.Check
                     type="checkbox"
@@ -280,10 +282,9 @@ class CadastroCatequizando extends React.Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-
-                <p>
-                  <b>Data de Nascimento</b>
-                </p>
+                <div className="mb-3">
+                  <b>Data de Nascimento:</b>
+                </div>
 
                 <Form.Group className="dataNasc">
                   <Form.Select
@@ -332,11 +333,6 @@ class CadastroCatequizando extends React.Component {
                 id="alertaPreenchimento"
               >
                 Preencha os campos obrigatórios!
-              </div>
-              <div className="btnCadastrar">
-                <Button variant="primary" onClick={modalPadrinhoParte1}>
-                  Padrinhos
-                </Button>
               </div>
 
               <div className="btnCadastrar">

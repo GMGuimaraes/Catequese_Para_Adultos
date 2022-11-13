@@ -1,0 +1,58 @@
+.padrinhos {
+    min-height: 100vh;
+    position: relative;
+    background-color: #d6ffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.modalPadrinhos {
+    display: flex;
+    background-color: #96A5B3;
+    width: 50vw;
+    height: 70vh;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    animation: animate;
+    animation-duration: 800ms;
+    box-shadow: 0 0 3px;
+    border-radius: 5px;
+    font-size: 0.9em;
+
+}
+
+@keyframes animate {
+    from {
+        opacity: 1;
+    }
+
+    from {
+        opacity: 0;
+    }
+}
+
+.nomePadrinho,
+.nomeMadrinha {
+    display: flex;
+    text-align: center;
+    align-items: baseline;
+    padding: 0 10px;
+}
+
+#buttonCadastrarPadrinhos {
+    margin: 0 auto;
+    display: inherit;
+}
+
+.InstrucoesPadrinhos {
+    font-size: 2.5ch;
+    font-weight: bold;
+}
+
+.mb-3 {
+    text-align: start;
+}

@@ -3,7 +3,7 @@ import { Container, Content } from "./styles";
 import { FaTimes, FaRegStickyNote, FaUserAlt, FaUsers } from "react-icons/fa";
 import { IoIosAddCircle } from "react-icons/io";
 import { FiLogOut } from "react-icons/fi";
-
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import SidebarItem from "../SidebarItem";
 
 const Sidebar = ({ active }) => {
@@ -20,6 +20,9 @@ const Sidebar = ({ active }) => {
         </a>
         <a href="/cadastrarTurma">
           <SidebarItem Icon={IoIosAddCircle} Text="Cadastrar Turma" />
+        </a>
+        <a href="/cadastrarPadrinho">
+          <SidebarItem Icon={AiOutlineUsergroupAdd} Text="Cadastrar Padrinho" />
         </a>
         <a href="/catequizando">
           <SidebarItem Icon={FaUserAlt} Text="Consultar Catequizandos" />

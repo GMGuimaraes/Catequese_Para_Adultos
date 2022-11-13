@@ -224,17 +224,28 @@ h2 {
   padding-top: 0px;
   padding-left: 55px;*/
 }
+#left_ h2 {
+  font: 30px/24px "Calisto MT";
+  color: #5a3c00;
+  font-weight: normal;
+  display: block;
+  letter-spacing: -1px;
+  word-spacing: 0em;
+  margin-bottom: auto;
+}
 
 #left_ p {
   color: #3f1e1e;
   font: 13px/20px "Trebuchet MS";
+  margin-bottom: 0;
+  margin-top: 0;
   /*
   padding: 0 0 0 55px;
   width: 190px;
   display: block;
-  margin-top: 0;
+  
   margin-right: 0;
-  margin-bottom: 0;
+  
   letter-spacing: 0px;*/
 }
 
@@ -266,7 +277,7 @@ h2 {
   font-weight: normal;
 }
 
-*/ #right_ {
+* #right_ {
   grid-area: right;
   /*padding: 1rem;
   height: 4rem;
@@ -281,21 +292,21 @@ h2 {
   */
 }
 
-/*#right_ h2 {
+#right_ h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
   font-weight: normal;
- 
   display: block;
   letter-spacing: -1px;
   word-spacing: 0em;
-  text-indent: 0px;
+  margin-bottom: auto;
+  /*text-indent: 0px;
   margin-top: 0;
   margin-right: 0;
   margin-bottom: 10px;
   padding-top: 0px;
-  padding-left: 20px;}
-*/
+  padding-left: 20px;*/}
+
 
 #right_ p {
 

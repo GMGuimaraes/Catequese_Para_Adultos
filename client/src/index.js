@@ -9,6 +9,7 @@ import Recados from "./Recados";
 import Turma from "./Turma";
 import Catequizando from "./Catequizando";
 import CadastrarTurma from "./CadastrarTurma";
+import CadastrarPadrinho from "./CadastroPadrinhos";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -25,10 +26,17 @@ root.render(
       <Route path="/pesquisar" element={<Pesquisar></Pesquisar>}></Route>
       <Route path="/paginaadm" element={<PaginaAdm></PaginaAdm>}></Route>
       <Route path="/recados" element={<Recados></Recados>}></Route>
-      <Route path="/cadastrarTurma" element={<CadastrarTurma></CadastrarTurma>}></Route>
       <Route
         path="/cadastrarTurma"
         element={<CadastrarTurma></CadastrarTurma>}
+      ></Route>
+      <Route
+        path="/cadastrarTurma"
+        element={<CadastrarTurma></CadastrarTurma>}
+      ></Route>
+      <Route
+        path="/cadastrarPadrinho"
+        element={<CadastrarPadrinho></CadastrarPadrinho>}
       ></Route>
       <Route path="/turma" element={<Turma></Turma>}></Route>
       <Route
