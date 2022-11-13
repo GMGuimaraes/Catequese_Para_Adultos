@@ -124,20 +124,14 @@ router.post("/create/primeiraeucaristia", createEucaristiaPrimeira.handle);
 router.post("/create/crisma", createCrisma.handle);
 
 router.get("/findbypk/turma/:idTurma", findTurma.handle);
-router.get(
-  "/findbypk/catequeseadulto/:idCatequeseAdultos",
-  findCatequeseAdultos.handle
-);
+router.get("/findbypk/catequeseadulto/:idCatequeseAdultos", findCatequeseAdultos.handle);
 router.get("/findbypk/pessoa/:id", findPessoa.handle);
 router.get("/findbypk/user/:idPessoa", findUser.handle);
 router.get("/findbypk/sacramento/:idSacramento", findSacramento.handle);
 router.get("/findbypk/padrinhomadrinha/:idPessoa", findPadrinhoMadrinha.handle);
 router.get("/findbypk/batismo/:idSacramento", findBatismo.handle);
 router.get("/findbypk/admissao/:idSacramento", findAdmissao.handle);
-router.get(
-  "/findbypk/primeiraeucaristia/:idSacramento",
-  findEucaristiaPrimeira.handle
-);
+router.get("/findbypk/primeiraeucaristia/:idSacramento", findEucaristiaPrimeira.handle);
 router.get("/findbypk/crisma/:idSacramento", findCrisma.handle);
 
 router.get("/readall/turma", readTurma.handle);
@@ -152,42 +146,25 @@ router.get("/readall/primeiraeucaristia", readEucaristiaPrimeira.handle);
 router.get("/readall/crisma", readCrisma.handle);
 
 router.patch("/update/turma/:idTurma", updateTurma.handle);
-router.patch(
-  "/update/catequeseadulto/:idCatequeseAdultos",
-  updateCatequeseAdultos.handle
-);
+router.patch("/update/catequeseadulto/:idCatequeseAdultos", updateCatequeseAdultos.handle);
 router.patch("/update/pessoa/:id", updatePessoa.handle);
 router.patch("/update/user/:idPessoa", updateUser.handle);
 router.patch("/update/sacramento/:idSacramento", updateSacramento.handle);
-router.patch(
-  "/update/padrinhomadrinha/:idPessoa",
-  updatePadrinhoMadrinha.handle
-);
+router.patch("/update/padrinhomadrinha/:idPessoa", updatePadrinhoMadrinha.handle);
 router.patch("/update/batismo/:idSacramento", updateBatismo.handle);
 router.patch("/update/admissao/:idSacramento", updateAdmissao.handle);
-router.patch(
-  "/update/primeiraeucaristia/:idSacramento",
-  updateEucaristiaPrimeira.handle
-);
+router.patch("/update/primeiraeucaristia/:idSacramento", updateEucaristiaPrimeira.handle);
 router.patch("/update/crisma/:idSacramento", updateCrisma.handle);
 
 router.delete("/delete/turma/:idTurma", deleteTurma.handle);
-router.delete(
-  "/delete/catequeseadulto/:idCatequeseAdultos",
-  deleteCatequeseAdultos.handle
-);
+router.delete("/delete/catequeseadulto/:idCatequeseAdultos", deleteCatequeseAdultos.handle);
+router.delete("/delete/pessoa/:id", deletePessoa.handle);
 router.delete("/delete/user/:idPessoa", deleteUser.handle);
 router.delete("/delete/sacramento/:idSacramento", deleteSacramento.handle);
-router.delete(
-  "/delete/padrinhomadrinha/:idPessoa",
-  deletePadrinhoMadrinha.handle
-);
+router.delete("/delete/padrinhomadrinha/:idPessoa", deletePadrinhoMadrinha.handle);
 router.delete("/delete/batismo/:idSacramento", deleteBatismo.handle);
 router.delete("/delete/admissao/:idSacramento", deleteAdmissao.handle);
-router.delete(
-  "/delete/primeiraeucaristia/:idSacramento",
-  deleteEucaristiaPrimeira.handle
-);
+router.delete("/delete/primeiraeucaristia/:idSacramento", deleteEucaristiaPrimeira.handle);
 router.delete("/delete/crisma/:idSacramento", deleteCrisma.handle);
 
 export { router };

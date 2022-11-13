@@ -3,11 +3,11 @@ import { prismaClient } from "../../database/prismaCliente";
 
 export class DeletePessoaController {
     async handle(request: Request, response: Response) {
-        const { cpf } = request.params;
+        const { id } = request.params;
 
         const pessoa = await prismaClient.pessoa.delete({
             where: {
-                cpf: +cpf,
+                id: +id,
             },
         });
         return response.json(pessoa);
