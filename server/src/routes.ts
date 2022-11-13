@@ -176,6 +176,7 @@ router.delete(
   "/delete/catequeseadulto/:idCatequeseAdultos",
   deleteCatequeseAdultos.handle
 );
+router.delete("/delete/pessoa/:id", deletePessoa.handle);
 router.delete("/delete/user/:idPessoa", deleteUser.handle);
 router.delete("/delete/sacramento/:idSacramento", deleteSacramento.handle);
 router.delete(
