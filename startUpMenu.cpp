@@ -1,8 +1,5 @@
 #include <windows.h>
 
-Process[] processos = Process.GetProcessesByName("cmd.exe"); // 
-
-
 const char g_szClassName[] = "ClassedaJanela";
 HWND buttonStart, buttonFinish;
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -33,7 +30,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				case 3:
 					::MessageBeep(MB_ICONEXCLAMATION);
 					::MessageBox(hwnd,"Service is Finished","Service is Finished",MB_OK);
-
+					system("start .//finishProgram.exe -hideself on");
 					exit(0);
 				break;
 			}
