@@ -1,4 +1,19 @@
-h2, form {
+h2,
+form {
     text-align: center;
     padding: 1rem;
+}
+
+.cadastrarTurma {
+    min-height: 100vh;
+    position: relative;
+    background-color: #d6ffff;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.btnConsultarTurmas {
+    display: flex;
+    justify-content: center;
+    margin: 25px;
 }

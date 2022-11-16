@@ -76,7 +76,7 @@ class Catequizando extends Component {
       },
       () => {
         bdCatequese
-          .delete("/delete/user/" + id, {})
+          .delete("/delete/pessoa/" + id, {})
           .then((response) => {
             console.log("Deletado!");
             alert("Catequizando Deletado!");

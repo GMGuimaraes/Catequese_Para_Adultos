@@ -12,7 +12,7 @@
     width: 50vw;
     height: 70vh;
     padding: 10px;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -37,10 +37,16 @@
 
 .nomePadrinho,
 .nomeMadrinha {
-    display: flex;
-    text-align: center;
+    width: 45vw;
+    padding: 2px;
+
+    /*text-align: center;
+     display: flex;
+
     align-items: baseline;
     padding: 0 10px;
+    
+    */
 }
 
 #buttonCadastrarPadrinhos {
@@ -55,4 +61,21 @@
 
 .mb-3 {
     text-align: start;
+}
+
+.cadPadrinhoPt1,
+.cadPadrinhoPt2 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.cadPadrinhoPt3 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 25px;
 }
