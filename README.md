@@ -22,7 +22,7 @@ Para finalizar basta clicar em "Finish Service" no menu aberno no passo anterior
 criadas por ela. 
 
 # Avançado
-
+<details><summary> Caso queira ver os detalhes de configuração ou seja o administrador do sistema. Clique aqui! (Este Passo é Opicional) </summary>
 Os passos abaixo não são necessarios caso o menu tenha sido iniciado corretamente. 
 Recomendado apenas para programadores que queiram configurações adicionais a aplicação.
 
@@ -108,6 +108,7 @@ yarn start
 ```
 
 Por ultimo, caso não abra automaticamente, basta acessar http://localhost:3000/ para interagir com a aplicação.
+</details>
 
 # Problemas comuns
 
