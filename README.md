@@ -16,7 +16,7 @@ Postgresql - Caso esteja instalando, anote a senha e a porta, vamos precisar mai
 Abra startUpMenu.exe, após aberto clique em "Start Cliente Service", e logo em seguida clique em "Start Server Service". 
 Irão abrir duas janelas que podem ser minimizadas. Logo em seguida abrirá automaticamente a aplicação em seu navegador já pronta para uso.
 
-![](/img/service window.png)
+![](img/service window.png)
 
 # Finalizar serviços
 
