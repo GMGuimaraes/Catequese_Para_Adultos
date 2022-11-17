@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "./App.css";
 import Navbar from "./Navbar";
+import Imagem_Home from "./images/Imagem_Home.jpg";
 
 function Home() {
   return (
@@ -15,8 +16,7 @@ function Home() {
             height="40px"
           ></img>
         </a>
-        <h1 className="mainTitle">Paróquia São João Bosco</h1>
-        <a href="/paginaadm">
+        <a href="/login">
           <Button className="buttonLogin" variant="outline-primary">
             Login
           </Button>{" "}
@@ -24,10 +24,10 @@ function Home() {
       </div>
       <header>
         <img
+          src={Imagem_Home}
           className="imagemPincipal"
-          src="https://site.ucdb.br//public/noticias/1033018-igreja.jpg"
-          width="900"
-          height="350"
+          width="450px"
+          height="350px"
         ></img>
       </header>
       <div className="container">

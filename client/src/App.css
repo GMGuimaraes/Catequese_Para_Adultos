@@ -20,7 +20,7 @@
 .home-nav {
   align-items: flex-start;
   display: flex;
-  background-color: #6B8080;
+  background-color: #ABCCCC;
   height: auto;
   justify-content: space-between;
   position: relative;
@@ -48,7 +48,7 @@
 header {
   display: flex;
   flex-direction: column;
-  /*width: 100%;*/
+  background-color: #1A3E72;
   align-items: center;
   padding: 1rem;
   text-align: center;
@@ -115,9 +115,10 @@ footer {
     position: absolute;
     
 }*/
-ul{
+ul {
   list-style: none;
 }
+
 ul.navi li,
 ul.navBar li {
   border-width: 1px;
@@ -206,9 +207,11 @@ content * {
   padding-top: 2vh;
   width: 266px;*/
 }
+
 h1 {
   text-align: center;
 }
+
 h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
@@ -224,6 +227,7 @@ h2 {
   padding-top: 0px;
   padding-left: 55px;*/
 }
+
 #left_ h2 {
   font: 30px/24px "Calisto MT";
   color: #5a3c00;
@@ -305,7 +309,8 @@ h2 {
   margin-right: 0;
   margin-bottom: 10px;
   padding-top: 0px;
-  padding-left: 20px;*/}
+  padding-left: 20px;*/
+}
 
 
 #right_ p {

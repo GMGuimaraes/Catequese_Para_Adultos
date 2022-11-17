@@ -10,6 +10,7 @@ import Turma from "./Turma";
 import Catequizando from "./Catequizando";
 import CadastrarTurma from "./CadastrarTurma";
 import CadastrarPadrinho from "./CadastroPadrinhos";
+import Login from "./Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -26,6 +27,7 @@ root.render(
       <Route path="/pesquisar" element={<Pesquisar></Pesquisar>}></Route>
       <Route path="/paginaadm" element={<PaginaAdm></PaginaAdm>}></Route>
       <Route path="/recados" element={<Recados></Recados>}></Route>
+      <Route path="/login" element={<Login></Login>}></Route>
       <Route
         path="/cadastrarTurma"
         element={<CadastrarTurma></CadastrarTurma>}
