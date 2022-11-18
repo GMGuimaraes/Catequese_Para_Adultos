@@ -80,74 +80,78 @@ class CadastroCatequizando extends React.Component {
     var dataConvertida = this.converterData(state.dia, state.mes, state.ano);
     var nome = this.validaNome(state.nome);
 
-    //Mensagens de Alerta exibidas quando há algum documento faltando
-    if (
-      state.cpf == false &&
-      state.rg == true &&
-      state.comprovanteResidencia == true
-    ) {
-      alert("CPF não foi apresentado!");
-    } else if (
-      state.cpf == true &&
-      state.rg == false &&
-      state.comprovanteResidencia == true
-    ) {
-      alert("RG não foi apresentado!");
-    } else if (
-      state.cpf == true &&
-      state.rg == true &&
-      state.comprovanteResidencia == false
-    ) {
-      alert("Comprovante de Residência não foi apresentado!");
-    } else if (
-      state.cpf == false &&
-      state.rg == false &&
-      state.comprovanteResidencia == true
-    ) {
-      alert("CPF e RG não foram apresentados!");
-    } else if (
-      state.cpf == true &&
-      state.rg == false &&
-      state.comprovanteResidencia == false
-    ) {
-      alert("RG e Comprovante de Residência não foram apresentados!");
-    } else if (
-      state.cpf == false &&
-      state.rg == true &&
-      state.comprovanteResidencia == true
-    ) {
-      alert("CPF e Comprovante de Residência não foram apresentados!");
-    } else if (
-      state.cpf == false &&
-      state.rg == false &&
-      state.comprovanteResidencia == false
-    ) {
-      alert("CPF, RG e Comprovante de Residência não foram apresentados!");
-    }
-
-    this.setState(
-      {
-        dataNasc: dataConvertida,
-      },
-      () => {
-        axios
-          .post(catequizandos, {
-            nome: this.state.nome,
-            cpf: this.state.cpf,
-            rg: this.state.rg,
-            comprovanteResidencia: this.state.comprovanteResidencia,
-            casado: this.state.casado,
-            dataNasc: this.state.dataNasc,
-          })
-          .then((response) => {
-            console.log("sucess");
-            alert("Catequizando cadastrado com sucesso!");
-            window.location.reload(false);
-            //history.push("/paginaadm");
-          })
-          .catch((error) => console.log(error));
+    if (nome == false) {
+      return;
+    } else {
+      //Mensagens de Alerta exibidas quando há algum documento faltando
+      if (
+        state.cpf == false &&
+        state.rg == true &&
+        state.comprovanteResidencia == true
+      ) {
+        alert("CPF não foi apresentado!");
+      } else if (
+        state.cpf == true &&
+        state.rg == false &&
+        state.comprovanteResidencia == true
+      ) {
+        alert("RG não foi apresentado!");
+      } else if (
+        state.cpf == true &&
+        state.rg == true &&
+        state.comprovanteResidencia == false
+      ) {
+        alert("Comprovante de Residência não foi apresentado!");
+      } else if (
+        state.cpf == false &&
+        state.rg == false &&
+        state.comprovanteResidencia == true
+      ) {
+        alert("CPF e RG não foram apresentados!");
+      } else if (
+        state.cpf == true &&
+        state.rg == false &&
+        state.comprovanteResidencia == false
+      ) {
+        alert("RG e Comprovante de Residência não foram apresentados!");
+      } else if (
+        state.cpf == false &&
+        state.rg == true &&
+        state.comprovanteResidencia == true
+      ) {
+        alert("CPF e Comprovante de Residência não foram apresentados!");
+      } else if (
+        state.cpf == false &&
+        state.rg == false &&
+        state.comprovanteResidencia == false
+      ) {
+        alert("CPF, RG e Comprovante de Residência não foram apresentados!");
       }
-    );
+
+      this.setState(
+        {
+          dataNasc: dataConvertida,
+        },
+        () => {
+          axios
+            .post(catequizandos, {
+              nome: this.state.nome,
+              cpf: this.state.cpf,
+              rg: this.state.rg,
+              comprovanteResidencia: this.state.comprovanteResidencia,
+              casado: this.state.casado,
+              dataNasc: this.state.dataNasc,
+            })
+            .then((response) => {
+              console.log("sucess");
+              alert("Catequizando cadastrado com sucesso!");
+              window.location.reload(false);
+              //history.push("/paginaadm");
+            })
+            .catch((error) => console.log(error));
+        }
+      );
+    }
   };
   converterData = (d, m, a) => {
     if (m.length < 2) {
@@ -168,10 +172,12 @@ class CadastroCatequizando extends React.Component {
     if (nome == "") {
       element.classList.remove("d-none");
       nomeElement.classList.add("is-invalid");
+      return false;
     } else {
       console.log("Nome OK!");
       element.classList.add("d-none");
       nomeElement.classList.remove("is-invalid");
+      return true;
     }
   };
 

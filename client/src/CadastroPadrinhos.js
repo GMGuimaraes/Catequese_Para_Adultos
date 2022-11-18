@@ -72,6 +72,7 @@ class Padrinhos extends React.Component {
 
     // this.state = {};
     this.state = {
+      padrinhos: [],
       catequizandos: [],
       editando: false,
       idEditando: 0,
@@ -98,10 +99,13 @@ class Padrinhos extends React.Component {
 
   async componentDidMount() {
     const response = await bdCatequese.get("/readall/pessoa");
+    const responseP = await bdCatequese.get("/readall/padrinhomadrinha");
 
     console.log(response.data);
+    console.log(responseP.data);
 
     this.setState({ catequizandos: response.data });
+    this.setState({ padrinhos: responseP.data });
   }
 
   handleChange = (event) => {
@@ -134,7 +138,6 @@ class Padrinhos extends React.Component {
     var state = this.state;
     var last = catequizandos[catequizandos.length - 1];
     var idPadrinho = last.id;
-    console.log(idPadrinho);
 
     this.setState({}, () => {
       axios
@@ -158,30 +161,34 @@ class Padrinhos extends React.Component {
     var dataConvertida = this.converterData(state.dia, state.mes, state.ano);
     var nome = this.validaNome(state.nome);
 
-    this.setState(
-      {
-        dataNasc: dataConvertida,
-      },
-      () => {
-        axios
-          .post(CreatePessoa, {
-            nome: this.state.nome,
-            cpf: this.state.cpf,
-            rg: this.state.rg,
-            comprovanteResidencia: this.state.comprovanteResidencia,
-            casado: this.state.casado,
-            dataNasc: this.state.dataNasc,
-          })
-          .then((response) => {
-            console.log("sucess");
-            //alert("Padrinho cadastrado com sucesso!");
-            this.cadastroPadrinho();
-            // window.location.reload(false);
-            //history.push("/paginaadm");
-          })
-          .catch((error) => console.log(error));
-      }
-    );
+    if (nome == false) {
+      return;
+    } else {
+      this.setState(
+        {
+          dataNasc: dataConvertida,
+        },
+        () => {
+          axios
+            .post(CreatePessoa, {
+              nome: this.state.nome,
+              cpf: this.state.cpf,
+              rg: this.state.rg,
+              comprovanteResidencia: this.state.comprovanteResidencia,
+              casado: this.state.casado,
+              dataNasc: this.state.dataNasc,
+            })
+            .then((response) => {
+              console.log("sucess");
+              //alert("Padrinho cadastrado com sucesso!");
+              this.cadastroPadrinho();
+              // window.location.reload(false);
+              //history.push("/paginaadm");
+            })
+            .catch((error) => console.log(error));
+        }
+      );
+    }
   };
   converterData = (d, m, a) => {
     if (m.length < 2) {
@@ -202,15 +209,18 @@ class Padrinhos extends React.Component {
     if (nome == "") {
       element.classList.remove("d-none");
       nomeElement.classList.add("is-invalid");
+      return false;
     } else {
       console.log("Nome OK!");
       element.classList.add("d-none");
       nomeElement.classList.remove("is-invalid");
+      return true;
     }
   };
 
   render() {
     const { catequizandos } = this.state;
+    const { padrinhos } = this.state;
 
     return (
       <div className="padrinhos">
@@ -236,14 +246,15 @@ class Padrinhos extends React.Component {
                       Adicionar Padrinhos
                     </Button>
                   </div>
-                  <div className="padrinhoCatequizando">
-                    <p>
-                      <b>Nome:</b>
-                    </p>
-                  </div>
-                  <hr></hr>
                 </li>
               ))}
+
+              <div className="padrinhoCatequizando">
+                <p>
+                  <b>Nome:</b>
+                </p>
+              </div>
+              <hr></hr>
             </ul>
           </div>
           <div className="modalPadrinhos parte1">

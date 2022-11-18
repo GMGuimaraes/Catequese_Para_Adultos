@@ -87,6 +87,9 @@ class CadastrarTurma extends React.Component {
                   onChange={this.handleChange}
                   required
                 ></Form.Control>
+                <Form.Control.Feedback type="invalid">
+                  Por favor, preencha a data inicial!
+                </Form.Control.Feedback>
               </Form.Group>
 
               <p></p>
