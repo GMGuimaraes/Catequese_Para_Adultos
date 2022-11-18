@@ -117,3 +117,5 @@ Por ultimo, caso não abra automaticamente, basta acessar http://localhost:3000/
 - Caso o usuario feche o navegador por engano, o programa basta acessar http://localhost:3000/ para acessar novamente a aplicação.
 - Caso alguma das janelas criadas tenha sido fechada por engano ou o programa não funcionar corretamente, é aconselhado finalizar a aplicação e inicia-la novamente.
 - Caso o programa seja inicializado e finalizado em um curto espaço de tempo, é possivel que ocorram erros, basta fechar todas as janelas manualmente.
+- caso ao abrir o menu ocorre um erro dizendo “Libgcc_s_dw2-1.dll não foi encontrado”, basta baixar o Visual C++ Redistributable direto do site da microsoft com a versão mais recente para o seu dispositivo. O link ao lado concentra algumas destas versões, basta instalar uma. https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/
+
