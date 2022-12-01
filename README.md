@@ -5,7 +5,8 @@ Caso não tenha, por favor instale-os.
 
 Node.js 16.18.0 (com npm 8.19.2)
 
-- https://nodejs.org/download/release/v16.18.0/
+- Windows 64bit: https://nodejs.org/download/release/v16.18.0/win-x64/
+- Windows 32bit: https://nodejs.org/download/release/v16.18.0/win-x86/
 
 Postgresql - Caso esteja instalando, anote a senha e a porta, vamos precisar mais pra frente. :warning:
 
